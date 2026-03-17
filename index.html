@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visual Studio Games | Hub</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS Crítico para garantir a troca de telas */
+        #screen-entry { display: flex; }
+        #screen-hub { display: none; }
+        section.active { display: flex !important; }
+    </style>
 </head>
 <body>
 
@@ -61,38 +67,4 @@
                     <div class="game-info">
                         <h3>SNAKE NEON</h3>
                         <p>Classic Arcade System</p>
-                        <button class="play-small" onclick="window.location.href='./snake.html'">LAUNCH</button>
-                    </div>
-                </div>
-
-                <div class="game-card">
-                    <div class="game-img" style="background: linear-gradient(135deg, #050505, #d4008d);"></div>
-                    <div class="game-info">
-                        <h3>NEON DRIFT</h3>
-                        <p>Inertia Physics Simulator</p>
-                        <button class="play-small" onclick="window.location.href='./carro.html'">LAUNCH</button>
-                    </div>
-                </div>
-
-                <div class="game-card">
-                    <div class="game-img" style="background: linear-gradient(135deg, #050505, #ff9900);"></div>
-                    <div class="game-info">
-                        <h3>MEME JUMP</h3>
-                        <p>Gravity Vector Engine</p>
-                        <button class="play-small" onclick="window.location.href='./meme.html'">LAUNCH</button>
-                    </div>
-                </div>
-
-                <div class="game-card">
-                    <div class="game-img" style="background: linear-gradient(135deg, #050505, #00d4ff);"></div>
-                    <div class="game-info">
-                        <h3>SPACE ACE</h3>
-                        <p>Particle Combat System</p>
-                        <button class="play-small" onclick="window.location.href='./espaco.html'">LAUNCH</button>
-                    </div>
-                </div>
-
-                <div class="game-card">
-                    <div class="game-img" style="background: linear-gradient(135deg, #050505, #00ff00);"></div>
-                    <div class="game-info">
-                        <h3>GALACTIC SIEGE
+                        <button class="play-small" onclick="window.location.href='./snake.html'">LAUNCH</
