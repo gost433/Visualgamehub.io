@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Drift | Visual Studio Games</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+        body { background: #050505; color: white; font-family: 'Orbitron'; margin: 0; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
+        canvas { background: #0a0a0a; border: 2px solid #333; box-shadow: 0 0 40px rgba(212, 0, 141, 0.2); border-radius: 10px; }
+        .ui { position: absolute; top: 20px; text-align: center; pointer-events: none; }
+        #score { color: #39FF14; font-size: 2rem; text-shadow: 0 0 10px #39FF14; }
+        .btns { margin-top: 20px; }
+        .btn { background: transparent; border: 1px solid #d4008d; color: #d4008d; padding: 10px 25px; cursor: pointer; font-family: 'Orbitron'; transition: 0.3s; }
+        .btn:hover { background: #d4008d; color: white; box-shadow: 0 0 20px #d4008d; }
+    </style>
+</head>
+<body>
+    <div class="ui">
+        <div>DISTANCE</div>
+        <div id="score">0m</div>
+    </div>
+    <canvas id="gameCanvas" width="400" height="600"></canvas>
+    <div class="btns">
+        <button class="btn" onclick="window.location.href='index.html'">BACK TO HUB</button>
+    </div>
+
+<script>
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+
+    let score = 0;
+    let gameActive = true;
+    let roadY = 0;
+
+    const player = {
+        x: 175,
+        y: 500,
+        w: 50,
+        h: 80,
+        color: "#d4008d",
+        speed: 7,
+        targetX: 175
+    };
+
+    const enemies = [];
+    const enemyColors = ["#39FF14", "#00d4ff", "#ff9900"];
+
+    function createEnemy() {
+        const lanes = [50, 150, 250, 300];
+        const lane = lanes[Math.floor(Math.random() * lanes.length)];
+        enemies.push({
+            x: lane,
+            y: -100,
+            w: 50,
+            h: 80,
+            speed: 3 + Math.random() * 5,
+            color: enemyColors[Math.floor(Math.random() * enemyColors.length)]
+        });
+    }
+
+    function update() {
+        if (!gameActive) return;
+
+        score++;
+        document.getElementById("score").innerText = score + "m";
+
+        // Suavização do movimento (Lerp)
+        player.x += (player.targetX - player.x) * 0.2;
+
+        // Movimento da estrada
+        roadY += 10;
+        if (roadY > 40) roadY = 0;
+
+        // Criar inimigos
+        if (score % 40 === 0) createEnemy();
+
+        // Mover inimigos
+        enemies.forEach((enemy, index) => {
+            enemy.y += enemy.speed;
+            
+            // Colisão Sênior (Bounding Box)
+            if (player.x < enemy.x + enemy.w &&
+                player.x + player.w > enemy.x &&
+                player.y < enemy.y + enemy.h &&
+                player.y + player.h > enemy.y) {
+                gameActive = false;
+                alert("GAME OVER! DISTANCE: " + score + "m");
+                location.reload();
+            }
+
+            if (enemy.y > canvas.height) enemies.splice(index, 1);
+        });
+    }
+
+    function draw() {
+        ctx.fillStyle = "#0a0a0a";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Desenhar Faixas da Estrada
+        ctx.strokeStyle = "#222";
+        ctx.setLineDash([20, 20]);
+        ctx.lineDashOffset = -roadY;
+        for(let i=1; i<4; i++) {
+            ctx.beginPath();
+            ctx.moveTo(i * 100, 0);
+            ctx.lineTo(
