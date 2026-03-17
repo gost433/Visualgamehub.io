@@ -2,103 +2,53 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visual Studio Games</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        body { background: #000 !important; color: #fff; font-family: 'Orbitron', sans-serif; margin: 0; overflow: hidden; }
         
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body { 
-            background: #000; 
-            color: #fff; 
-            font-family: 'Orbitron', sans-serif; 
-            height: 100vh;
-            width: 100vw;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* ANIMAÇÃO DE COR (CHROMA) */
+        /* ANIMAÇÃO CHROMA */
         @keyframes chroma {
             0% { color: #39FF14; text-shadow: 0 0 10px #39FF14; }
-            33% { color: #d4008d; text-shadow: 0 0 10px #d4008d; }
-            66% { color: #00d4ff; text-shadow: 0 0 10px #00d4ff; }
+            50% { color: #00d4ff; text-shadow: 0 0 10px #00d4ff; }
             100% { color: #39FF14; text-shadow: 0 0 10px #39FF14; }
         }
+        .chroma { animation: chroma 3s infinite linear; }
 
-        .chroma-text {
-            animation: chroma 5s infinite linear;
-            font-weight: bold;
-        }
+        /* TELAS */
+        .page { width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; position: absolute; top: 0; left: 0; }
+        #login-page { z-index: 10; background: #000; }
+        #hub-page { z-index: 1; display: none; background: #050505; flex-direction: column; padding: 20px; }
 
-        /* TELA DE LOGIN */
-        #login-page {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            z-index: 10;
-        }
-
-        .login-box {
-            background: #0a0a0a;
-            padding: 40px;
-            border: 1px solid #222;
-            border-radius: 12px;
-            text-align: center;
-            width: 320px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
-        }
-
-        h1 { font-size: 1.1rem; margin-bottom: 25px; letter-spacing: 2px; }
+        .box { background: #0a0a0a; padding: 40px; border: 1px solid #222; border-radius: 10px; text-align: center; width: 300px; }
+        input { width: 100%; padding: 10px; margin: 10px 0; background: #000; border: 1px solid #333; color: #fff; outline: none; }
+        .btn { width: 100%; padding: 15px; background: #39FF14; color: #000; border: none; font-weight: bold; cursor: pointer; font-family: 'Orbitron'; }
         
-        input {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            background: #000;
-            border: 1px solid #333;
-            color: #fff;
-            outline: none;
-            font-family: 'Orbitron';
-            font-size: 0.8rem;
-        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; width: 100%; max-width: 900px; margin-top: 50px; }
+        .card { background: #111; border: 1px solid #222; padding: 20px; text-align: center; border-radius: 5px; }
+        .btn-launch { background: transparent; border: 1px solid #39FF14; color: #39FF14; padding: 8px; width: 100%; cursor: pointer; font-family: 'Orbitron'; font-size: 0.7rem; margin-top: 10px; }
+    </style>
+</head>
+<body>
 
-        .btn-enter {
-            width: 100%;
-            padding: 15px;
-            background: #fff;
-            color: #000;
-            border: none;
-            font-weight: bold;
-            cursor: pointer;
-            font-family: 'Orbitron';
-            margin-top: 10px;
-            transition: 0.3s;
-        }
-        .btn-enter:hover { transform: scale(1.05); background: #39FF14; }
+    <div id="login-page" class="page">
+        <div class="box">
+            <h1 class="chroma" style="font-size: 1.1rem; margin-bottom: 20px;">VISUAL STUDIO GAMES</h1>
+            <input type="text" placeholder="ID">
+            <input type="password" placeholder="PASS">
+            <button class="btn" onclick="document.getElementById('login-page').style.display='none'; document.getElementById('hub-page').style.display='flex';">ENTER SYSTEM</button>
+        </div>
+    </div>
 
-        /* TELA DO HUB */
-        #hub-page {
-            display: none;
-            width: 90%;
-            max-width: 1100px;
-            flex-direction: column;
-            height: 90vh;
-        }
+    <div id="hub-page" class="page">
+        <h2 class="chroma" style="font-size: 1rem; border-bottom: 1px solid #222; width: 100%; padding-bottom: 15px; text-align: center;">VISUAL STUDIO GAMES</h2>
+        <div class="grid">
+            <div class="card"><h3>SNAKE</h3><button class="btn-launch" onclick="window.location.href='./snake.html'">LAUNCH</button></div>
+            <div class="card"><h3>DRIFT</h3><button class="btn-launch" onclick="window.location.href='./carro.html'">LAUNCH</button></div>
+            <div class="card"><h3>MEME</h3><button class="btn-launch" onclick="window.location.href='./meme.html'">LAUNCH</button></div>
+            <div class="card"><h3>MEMORY</h3><button class="btn-launch" onclick="window.location.href='./memoria.html'">LAUNCH</button></div>
+        </div>
+    </div>
 
-        .header {
-            border-bottom: 1px solid #222;
-            padding-bottom: 15px;
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 25px;
+</body>
+</html>
