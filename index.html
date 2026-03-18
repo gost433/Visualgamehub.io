@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kovaliosky | Visual Designer & Dev</title>
+    <title>Kovaliosky | Software Engineer & Strategic Designer</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=JetBrains+Mono:wght@300;700&display=swap');
         
@@ -30,15 +30,16 @@
 
         .chroma { color: #39FF14; text-shadow: 0 0 10px #39FF14; margin-bottom: 20px; font-size: 1rem; letter-spacing: 2px; }
 
-        /* 3. GRID & CARDS */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; width: 100%; max-width: 1100px; margin-top: 20px; }
-        .card { background: #0a0a0a; border: 1px solid #1a1a1a; padding: 20px; border-radius: 10px; transition: 0.3s; }
-        .card:hover { border-color: #333; }
+        /* 3. GRID & CARDS (Ajustada para 3 itens grandes) */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; width: 100%; max-width: 1100px; margin-top: 20px; }
+        .card { background: #0a0a0a; border: 1px solid #1a1a1a; padding: 25px; border-radius: 12px; transition: 0.3s; }
+        .card:hover { border-color: #333; transform: translateY(-3px); }
 
         /* 4. BOTÕES */
-        .btn-main { width: 100%; max-width: 250px; padding: 15px; background: #fff; color: #000; border: none; font-weight: bold; cursor: pointer; font-family: 'Orbitron'; margin-top: 10px; }
+        .btn-main { width: 100%; max-width: 250px; padding: 15px; background: #fff; color: #000; border: none; font-weight: bold; cursor: pointer; font-family: 'Orbitron'; margin-top: 10px; text-transform: uppercase;}
         .btn-main:hover { background: #39FF14; box-shadow: 0 0 15px #39FF14; }
-        .btn-nav { background: none; border: 1px solid #333; color: #888; padding: 10px; cursor: pointer; width: 100%; margin-top: 5px; font-size: 0.65rem; font-family: 'Orbitron'; transition: 0.3s; }
+        
+        .btn-nav { background: none; border: 1px solid #333; color: #888; padding: 12px; cursor: pointer; width: 100%; margin-top: 5px; font-size: 0.7rem; font-family: 'Orbitron'; transition: 0.3s; text-transform: uppercase; }
         .btn-nav:hover { border-color: #fff; color: #fff; }
 
         input { width: 100%; max-width: 250px; padding: 12px; background: #111; border: 1px solid #333; color: #fff; text-align: center; margin-bottom: 10px; font-family: 'Orbitron'; outline: none; }
@@ -62,44 +63,39 @@
         
         <div class="grid">
             <div class="card" style="border-color: #ff3131; background: rgba(255, 49, 49, 0.02);">
-                <h3 style="color:#ff3131; font-size:0.7rem;">SECURITY_SHIELD</h3>
-                <div id="security-status" style="font-family:'JetBrains Mono'; font-size:0.55rem; color:#ff3131; text-align:left; margin:10px 0; height:60px; line-height: 1.4;">
+                <h3 style="color:#ff3131; font-size:0.75rem; margin-bottom: 10px;">SECURITY_SHIELD</h3>
+                <div id="security-status" style="font-family:'JetBrains Mono'; font-size:0.6rem; color:#ff3131; text-align:left; margin:15px 0; height:70px; line-height: 1.5; border-left: 2px solid #ff3131; padding-left: 10px;">
                     > SYSTEM_IDLE<br>
-                    > NO_SCAN_HISTORY<br>
                     > WAITING_COMMAND...
                 </div>
                 <button type="button" class="btn-nav" style="border-color:#ff3131; color:#ff3131;" onclick="runSecurityScan()">RUN_SECURE_SCAN</button>
             </div>
-
-            <div class="card">
-                <h3>SOFTWARE</h3>
-                <button class="btn-nav" onclick="window.location.href='snake.html'">SNAKE_GAME</button>
-                <button class="btn-nav" onclick="window.location.href='carro.html'">DRIFT_SIM</button>
-                <button class="btn-nav" onclick="window.location.href='memoria.html'">MEMORY_OS</button>
-            </div>
             
             <div class="card" style="border-color: #00d4ff;">
-                <h3 style="color:#00d4ff; font-size:0.7rem;">WEB_INTERFACES</h3>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 10px;">
+                <h3 style="color:#00d4ff; font-size:0.75rem; margin-bottom: 10px;">SOLUÇÕES_BUSINESS</h3>
+                <p style="font-size:0.6rem; color:#666; margin-bottom:15px;">Interfaces otimizadas para conversão e performance.</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
                     <button class="btn-nav" style="margin:0;" onclick="window.location.href='exemplo1.html'">NEON</button>
                     <button class="btn-nav" style="margin:0;" onclick="window.location.href='exemplo2.html'">CLEAN</button>
                     <button class="btn-nav" style="margin:0;" onclick="window.location.href='exemplo3.html'">APPLE</button>
                     <button class="btn-nav" style="margin:0;" onclick="window.location.href='exemplo4.html'">CRYPTO</button>
-                    <button class="btn-nav" style="grid-column: span 2; border-color:#fff; color:#fff;" onclick="window.location.href='exemplo5.html'">AGENCY_3.0_PRO</button>
+                    <button class="btn-nav" style="margin:0;" onclick="window.location.href='exemplo5.html'">AGENCY</button>
+                    <button class="btn-nav" style="margin:0; border-color:#28a745; color:#28a745;" onclick="window.location.href='exemplo6.html'">CHECKOUT_PRO</button>
                 </div>
             </div>
 
-            <div class="card" style="border: 1px solid; animation: chroma 3s infinite linear;">
-                <h3 style="font-size: 0.7rem;">HIRE_ENGINEER</h3>
-                <button class="btn-main" style="font-size:0.55rem; padding: 10px; max-width: 100%;" onclick="window.location.href='https://wa.me/5569992636349'">WHATSAPP_DIRECT</button>
+            <div class="card" style="border: 2px solid; animation: chroma 3s infinite linear; background: rgba(0,0,0,0.5);">
+                <h3 style="font-size: 0.75rem; margin-bottom: 10px;">HIRE_ENGINEER</h3>
+                <p style="font-size:0.6rem; color:#888; margin-bottom: 20px;">Pronto para blindar sua presença digital?</p>
+                <button class="btn-main" style="font-size:0.65rem; padding: 12px; max-width: 100%;" onclick="window.location.href='https://wa.me/5569992636349'">INICIAR_PROJETO_WHATSAPP</button>
             </div>
         </div>
         
-        <button class="btn-nav" style="width: auto; margin-top: 20px; border:none;" onclick="location.reload()">[ SHUTDOWN_SESSION ]</button>
+        <button class="btn-nav" style="width: auto; margin-top: 30px; border:none; text-decoration: underline;" onclick="location.reload()">[ SHUTDOWN_SESSION ]</button>
     </div>
 
     <script>
-        // Função de Boot disparada assim que o script carrega
+        // Função de Boot blindada (execução imediata)
         function startBoot() {
             const splash = document.getElementById('splash-screen');
             const login = document.getElementById('login-screen');
@@ -118,7 +114,7 @@
             }, 3000); 
         }
 
-        // Execução imediata para evitar travamentos
+        // Executa sem depender do body onload
         startBoot();
 
         function unlock() {
@@ -126,7 +122,7 @@
             document.getElementById('hub-screen').style.display = 'flex';
         }
 
-        // Demonstração de Programação de Segurança
+        // Demonstração Interativa de Programação de Segurança
         function runSecurityScan() {
             const statusDiv = document.getElementById('security-status');
             const logs = [
@@ -134,13 +130,13 @@
                 "> BYPASS_ATTEMPT_BLOCKED",
                 "> ENCRYPTING_XSS_SHIELD",
                 "> SQL_INJECTION_PROTECTED",
-                "> INTEGRITY_VERIFIED.",
+                "> PCI-DSS_COMPLIANCE_CHECK",
                 "> RESULT: 100% SECURE"
             ];
             
             let i = 0;
             statusDiv.innerHTML = "";
-            statusDiv.style.color = "#39FF14"; 
+            statusDiv.style.color = "#39FF14"; // Muda para verde durante o scan
             const interval = setInterval(() => {
                 if(i < logs.length) {
                     statusDiv.innerHTML += logs[i] + "<br>";
