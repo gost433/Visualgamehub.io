@@ -3,98 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kovaliosky | Software Engineer</title>
+    <title>Kovaliosky | Vanguard Core</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=JetBrains+Mono:wght@300;700&display=swap');
-        
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background-color: #000; color: #fff; font-family: 'Orbitron', sans-serif; 
-            width: 100vw; height: 100vh; overflow: hidden; position: relative;
-            -webkit-user-select: none; user-select: none;
-        }
+        body { background: #000; color: #fff; font-family: 'Orbitron', sans-serif; overflow: hidden; }
 
-        /* SPLASH SCREEN OTIMIZADA */
+        /* SPLASH - Z-INDEX MÁXIMO */
         #splash-screen { 
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
             background: #000; color: #39FF14; display: flex; flex-direction: column; 
-            align-items: center; justify-content: center; z-index: 10000; 
-            cursor: pointer; transition: opacity 0.8s; 
+            align-items: center; justify-content: center; z-index: 99999; 
+            cursor: pointer; opacity: 1; transition: opacity 0.5s;
         }
 
-        /* GRID DO HUB */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; width: 90%; max-width: 1200px; margin-top: 20px; }
-        .card { background: #0a0a0a; border: 1px solid #1a1a1a; padding: 25px; border-radius: 12px; transition: 0.5s; text-align: center; }
+        /* HUB - ESCONDIDO INICIALMENTE */
+        #hub-screen { 
+            display: none; width: 100vw; height: 100vh; 
+            flex-direction: column; align-items: center; justify-content: center; 
+        }
 
-        /* MENU INFERIOR (FAQ & SOBRE) */
-        .bottom-nav { position: absolute; bottom: 30px; display: flex; gap: 40px; }
-        .nav-item { color: #444; font-size: 0.7rem; cursor: pointer; letter-spacing: 2px; transition: 0.3s; }
-        .nav-item:hover { color: #39FF14; text-shadow: 0 0 5px #39FF14; }
+        .chroma { color: #39FF14; text-shadow: 0 0 10px #39FF14; margin-bottom: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; width: 90%; max-width: 1000px; }
+        .card { background: #0a0a0a; border: 1px solid #1a1a1a; padding: 20px; border-radius: 10px; text-align: center; }
+        
+        .btn-nav { background: none; border: 1px solid #333; color: #888; padding: 10px; width: 100%; margin-top: 10px; cursor: pointer; font-family: 'Orbitron'; font-size: 0.6rem; }
+        .btn-nav:hover { border-color: #39FF14; color: #39FF14; }
 
-        /* MODAIS */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 20000; justify-content: center; align-items: center; }
-        .modal-content { background: #050505; border: 1px solid #39FF14; padding: 40px; max-width: 500px; border-radius: 10px; font-family: 'JetBrains Mono'; position: relative; }
-        .modal-content h3 { color: #39FF14; margin-bottom: 20px; font-family: 'Orbitron'; font-size: 0.9rem; }
-        .modal-body { font-size: 0.75rem; color: #888; line-height: 1.6; }
-        .close-btn { position: absolute; top: 15px; right: 20px; color: #ff3131; cursor: pointer; font-size: 0.6rem; }
+        /* BOTÕES INFERIORES */
+        .footer-menu { position: absolute; bottom: 20px; display: flex; gap: 30px; font-size: 0.6rem; color: #444; }
+        .footer-menu span { cursor: pointer; transition: 0.3s; }
+        .footer-menu span:hover { color: #39FF14; }
     </style>
 </head>
 <body oncontextmenu="return false;">
 
-    <div id="splash-screen" onclick="forceEntry()">
-        <p class="typewriter">> INITIALIZING_SECURE_VANGUARD_BOOT...</p>
-        <p style="font-size: 0.5rem; color: #444; margin-top: 15px;">AUTH: KOVALIOSKY_DEV // [ CLICK_TO_BYPASS ]</p>
+    <div id="splash-screen" onclick="emergencyUnlock()">
+        <p style="font-family: 'JetBrains Mono'; letter-spacing: 2px;">> INITIALIZING_VANGUARD_CORE...</p>
+        <p style="font-size: 0.5rem; color: #222; margin-top: 20px;">[ CLIQUE EM QUALQUER LUGAR PARA FORÇAR ENTRADA ]</p>
     </div>
 
-    <div id="hub-screen" style="display:none; width:100%; height:100vh; flex-direction:column; align-items:center; justify-content:center;">
-        <h2 style="color:#39FF14; text-shadow:0 0 10px #39FF14; margin-bottom:40px;">VANGUARD_CORE_HUB</h2>
+    <div id="hub-screen">
+        <h1 class="chroma">VANGUARD_CORE_HUB</h1>
         
         <div class="grid">
-            <div class="card" style="border-color:#ff3131;">
+            <div class="card" style="border-color: #ff3131;">
                 <h3 style="color:#ff3131; font-size:0.7rem;">SECURITY_SHIELD</h3>
-                <div id="scan-status" style="margin:20px 0; color:#ff3131; font-size:0.6rem; font-family:'JetBrains Mono';">> IDLE...</div>
-                <button onclick="startScan()" style="background:none; border:1px solid #ff3131; color:#ff3131; padding:10px; width:100%; cursor:pointer; font-family:'Orbitron'; font-size:0.6rem;">RUN_SCAN</button>
+                <div id="status" style="margin:15px 0; font-size:0.6rem; color:#ff3131;">> IDLE...</div>
+                <button class="btn-nav" style="color:#ff3131; border-color:#ff3131;" onclick="doScan()">RUN_SCAN</button>
             </div>
 
-            <div class="card" style="border-color:#00d4ff;">
+            <div class="card" style="border-color: #00d4ff;">
                 <h3 style="color:#00d4ff; font-size:0.7rem;">SOLUTIONS</h3>
-                <button onclick="location.href='exemplo4.html'" style="background:none; border:1px solid #333; color:#888; padding:10px; width:100%; margin-top:15px; cursor:pointer; font-family:'Orbitron'; font-size:0.6rem;">CRYPTO_DASH</button>
-                <button onclick="location.href='exemplo6.html'" style="background:none; border:1px solid #28a745; color:#28a745; padding:10px; width:100%; margin-top:10px; cursor:pointer; font-family:'Orbitron'; font-size:0.6rem;">PAYMENT_SYSTEM</button>
-            </div>
-        </div>
-
-        <div class="bottom-nav">
-            <div class="nav-item" onclick="showModal('about')">SOBRE NÓS</div>
-            <div class="nav-item" onclick="showModal('faq')">F.A.Q</div>
-            <div class="nav-item" onclick="location.href='https://wa.me/5569992636349'">CONTATO</div>
-        </div>
-    </div>
-
-    <div id="modal-ui" class="modal" onclick="closeModal()">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="close-btn" onclick="closeModal()">[ FECHAR ]</span>
-            <div id="modal-data"></div>
-        </div>
-    </div>
-
-    <script>
-        // Transição de segurança
-        function forceEntry() {
-            const s = document.getElementById('splash-screen');
-            s.style.opacity = '0';
-            setTimeout(() => {
-                s.style.display = 'none';
-                document.getElementById('hub-screen').style.display = 'flex';
-            }, 700);
-        }
-        window.onload = () => { setTimeout(forceEntry, 4000); };
-
-        // Sistema de Modais
-        const info = {
-            about: "<h3>OUR_CORE</h3>Liderada por Kovaliosky, a Vanguards Visual é especializada em arquitetura de software e design estratégico para o mercado de alta performance.",
-            faq: "<h3>SYSTEM_INTEL</h3><b>> SEGURANÇA?</b> Implementamos protocolos de defesa ativa.<br><b>> CRIPTO?</b> Integração total com gateways blockchain."
-        };
-
-        function showModal(key) {
-            document.getElementById('modal-data').innerHTML = info[key];
-            document.getElementById('modal-ui').
+                <button class="btn-nav" onclick="location.href='exemplo4.html'">CRYPTO_DASH</button>
+                <button class="btn-nav" style="border-color:#28a745; color:#28a745;" onclick="location.href='exemplo6.html
