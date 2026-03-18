@@ -14,26 +14,31 @@
             display: flex; flex-direction: column; align-items: center; justify-content: center; 
         }
 
-        /* TELA DE ENTRADA */
-        #splash { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 999; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #39FF14; }
+        /* TELA DE ENTRADA (A CORTINA) */
+        #splash { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: #000; z-index: 999; display: flex; 
+            flex-direction: column; align-items: center; justify-content: center; 
+            cursor: pointer; color: #39FF14; transition: 0.5s;
+        }
 
-        /* TITULO PRINCIPAL */
+        /* HUB PRINCIPAL */
+        #hub-screen { 
+            display: none; /* Começa escondido e o JS liga ele */
+            width: 100%; max-width: 900px; flex-direction: column; 
+            align-items: center; justify-content: center; z-index: 10;
+        }
+
         .chroma { color: #39FF14; text-shadow: 0 0 15px #39FF14; margin-bottom: 40px; letter-spacing: 5px; font-size: 1.5rem; text-align: center; }
 
         /* GRID DE CARDS */
-        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; width: 90%; max-width: 850px; z-index: 10; }
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; width: 90%; }
+        .card { background: #050505; border: 1px solid #1a1a1a; padding: 30px; border-radius: 15px; text-align: center; transition: 0.3s; }
         
-        /* CARD BASE (VERMELHO INICIAL) */
-        .card { 
-            background: #050505; border: 1px solid #1a1a1a; padding: 35px; 
-            border-radius: 15px; text-align: center; transition: all 0.5s ease; 
-        }
-        
-        /* ESTILO ESPECÍFICO DO SCAN */
-        #card-scan { border-color: #ff3131; }
-        #status-text { color: #ff3131; font-family: 'JetBrains Mono'; font-size: 0.65rem; margin-bottom: 20px; min-height: 40px; }
-        
-        /* BOTÕES */
+        /* CORES DO SCAN */
+        .status-red { color: #ff3131; border-color: #ff3131 !important; }
+        .status-green { color: #39FF14; border-color: #39FF14 !important; text-shadow: 0 0 10px #39FF14; }
+
         button { 
             background: none; border: 1px solid #333; color: #888; padding: 12px; 
             width: 100%; cursor: pointer; font-family: 'Orbitron'; font-size: 0.6rem; 
@@ -41,14 +46,97 @@
         }
         button:hover { border-color: #fff; color: #fff; }
 
-        #btn-scan { color: #ff3131; border-color: #ff3131; }
-        
-        /* BOTÃO WHATSAPP */
-        .contact-btn { 
-            background: #39FF14; color: #000; font-weight: bold; margin-top: 50px; 
-            width: 300px; border: none; padding: 18px; font-size: 0.8rem; letter-spacing: 2px;
-        }
-        .contact-btn:hover { background: #fff; box-shadow: 0 0 25px #39FF14; }
+        .contact-btn { background: #39FF14; color: #000; font-weight: bold; margin-top: 40px; width: 280px; border: none; padding: 15px; }
 
-        /* FOOTER NAV */
-        .footer-nav { position: absolute; bottom: 30px; display: flex; gap
+        /* FOOTER */
+        .footer-nav { position: absolute; bottom: 30px; display: flex; gap: 40px; font-size: 0.6rem; color: #333; letter-spacing: 2px; }
+        .footer-nav span:hover { color: #39FF14; cursor: pointer; }
+
+        /* MODAL */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; }
+        .modal-content { background: #0a0a0a; border: 1px solid #39FF14; padding: 40px; max-width: 500px; border-radius: 10px; position: relative; }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+    <div id="splash" onclick="unlock()">
+        <p style="font-family: 'JetBrains Mono';">> DECRYPTING_VANGUARD_FILES...</p>
+        <p style="font-size: 0.5rem; color: #444; margin-top: 15px;">[ CLICK TO BYPASS ]</p>
+    </div>
+
+    <div id="hub-screen">
+        <h1 class="chroma">VANGUARD_CORE_HUB</h1>
+        
+        <div class="grid">
+            <div id="card-scan" class="card status-red">
+                <h3 id="scan-title" style="font-size:0.75rem; margin-bottom: 15px;">SECURITY_SHIELD</h3>
+                <div id="status-text" style="margin-bottom:20px; font-size:0.6rem; font-family:'JetBrains Mono';">> SYSTEM_IDLE...</div>
+                <button id="btn-action" class="status-red" onclick="runScan()">RUN_SCAN</button>
+            </div>
+
+            <div class="card" style="border-color: #28a745;">
+                <h3 style="color:#28a745; font-size:0.75rem; margin-bottom: 15px;">SOLUTIONS</h3>
+                <button style="border-color:#28a745; color:#28a745;" onclick="location.href='exemplo6.html'">PAYMENT_SYSTEM</button>
+                <button onclick="location.href='exemplo2.html'">CLEAN_UI</button>
+            </div>
+        </div>
+
+        <button class="contact-btn" onclick="location.href='https://wa.me/5569992636349'">INICIAR PROJETO</button>
+
+        <div class="footer-nav">
+            <span onclick="openModal('sobre')">SOBRE NÓS</span>
+            <span onclick="openModal('faq')">F.A.Q</span>
+        </div>
+    </div>
+
+    <div id="modal" class="modal" onclick="this.style.display='none'">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div id="modal-text" style="font-family:'JetBrains Mono'; font-size:0.75rem; color:#888;"></div>
+        </div>
+    </div>
+
+    <script>
+        // FORÇA A APARIÇÃO DO HUB
+        function unlock() {
+            document.getElementById('splash').style.display = 'none';
+            document.getElementById('hub-screen').style.display = 'flex';
+        }
+
+        // Se o cara não clicar, abre sozinho em 4 segundos
+        setTimeout(unlock, 4000);
+
+        function runScan() {
+            const card = document.getElementById('card-scan');
+            const title = document.getElementById('scan-title');
+            const text = document.getElementById('status-text');
+            const btn = document.getElementById('btn-action');
+
+            text.innerHTML = "> SCANNING...";
+            
+            setTimeout(() => {
+                card.classList.remove('status-red');
+                card.classList.add('status-green');
+                title.classList.add('status-green');
+                text.classList.add('status-green');
+                btn.classList.remove('status-red');
+                btn.classList.add('status-green');
+                
+                text.innerHTML = "> SCAN_COMPLETE<br>> 100%_SECURE";
+                btn.innerHTML = "PROTECTED";
+            }, 1500);
+        }
+
+        const info = {
+            sobre: "VANGUARDS VISUAL: Engenharia estratégica e Design futurista por Kovaliosky.",
+            faq: "SISTEMA SEGURO: Proteção contra plágio ativa. Pagamentos via Cripto e Pix."
+        };
+
+        function openModal(key) {
+            document.getElementById('modal-text').innerHTML = info[key];
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        document.onkeydown = function(e) { if(e.keyCode == 123) return false; };
+    </script>
+</body>
+</html>
