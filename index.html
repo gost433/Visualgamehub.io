@@ -1,98 +1,17 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kovaliosky | Vanguard Core Hub</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=JetBrains+Mono:wght@300;700&display=swap');
+<div class="card">
+    <span class="label">Strategic_Deployments</span>
+    <h3 style="font-size:0.7rem; margin-bottom:10px;">ACTIVE_SOLUTIONS_V1</h3>
+    <div class="sol-grid">
+        <button onclick="location.href='exemplo1.html'">Neon_Noir</button>
+        <button onclick="location.href='exemplo2.html'">Clean_UX</button>
+        <button onclick="location.href='exemplo3.html'">Apple_Core</button>
+        <button onclick="location.href='exemplo4.html'">Crypto_Dash</button>
+        <button onclick="location.href='exemplo5.html'">Agency_Web</button>
         
-        * { margin: 0; padding: 0; box-sizing: border-box; cursor: crosshair; }
-        
-        body { 
-            background: #000; color: #fff; font-family: 'Orbitron', sans-serif; 
-            overflow: hidden; height: 100vh; width: 100vw; 
-            display: flex; flex-direction: column; align-items: center; justify-content: center; 
-        }
-
-        /* Container Principal - VISÍVEL POR PADRÃO */
-        #hub-screen { 
-            display: flex; width: 100%; max-width: 1000px; 
-            flex-direction: column; align-items: center; justify-content: center; 
-            z-index: 10; padding: 20px; 
-        }
-
-        .chroma { 
-            color: #39FF14; text-shadow: 0 0 15px #39FF14; 
-            margin-bottom: 30px; letter-spacing: 5px; font-size: 1.4rem; 
-        }
-
-        /* Grid de Cards conforme sua imagem */
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%; }
-        
-        .card { 
-            background: rgba(5, 5, 5, 0.8); border: 1px solid #1a1a1a; 
-            padding: 25px; border-radius: 15px; text-align: left;
-        }
-        
-        /* Estilo Verde Ativo (Security Shield) */
-        .status-green { 
-            border-color: #39FF14 !important; 
-            box-shadow: 0 0 15px rgba(57, 255, 20, 0.1); 
-        }
-
-        .label { font-family: 'JetBrains Mono'; font-size: 0.5rem; color: #444; text-transform: uppercase; margin-bottom: 5px; display: block; }
-        
-        /* Botões de Soluções */
-        .sol-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
-        
-        button { 
-            background: none; border: 1px solid #333; color: #666; 
-            padding: 10px; font-family: 'Orbitron'; font-size: 0.5rem; 
-            text-transform: uppercase; cursor: pointer; transition: 0.3s;
-        }
-        
-        button:hover { border-color: #39FF14; color: #39FF14; }
-
-        /* Botão Contratar Especialista */
-        .main-btn { 
-            background: #39FF14; color: #000; font-weight: bold; 
-            margin-top: 40px; width: 350px; border: none; padding: 18px; 
-            font-size: 0.8rem; letter-spacing: 2px; cursor: pointer;
-        }
-
-        .main-btn:hover { background: #fff; box-shadow: 0 0 20px #39FF14; }
-    </style>
-</head>
-<body>
-
-    <div id="hub-screen">
-        <h1 class="chroma">VANGUARD_CORE_HUB</h1>
-        
-        <div class="grid">
-            <div class="card status-green">
-                <span class="label">Cybersecurity_Module</span>
-                <h3 style="color:#39FF14; font-size:0.7rem; margin-bottom:10px;">SECURITY_SHIELD</h3>
-                <p style="color:#39FF14; font-family:'JetBrains Mono'; font-size:0.6rem; line-height:1.4;">
-                    > SHIELD_ACTIVE_100%<br>> SYSTEM_SECURE_BY_VANGUARD
-                </p>
-                <button style="border-color:#39FF14; color:#39FF14; margin-top:15px; width:100%;">SYSTEM_PROTECTED</button>
-                
-                <div style="margin-top:30px;">
-                    <span class="label">Lead_Engineer</span>
-                    <p style="font-size:0.55rem; font-family:'JetBrains Mono';">GUILHERME KOVALIOSKY<br>Senior Dev | Cyber Specialist</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="label">Strategic_Deployments</span>
-                <h3 style="font-size:0.7rem; margin-bottom:10px;">ACTIVE_SOLUTIONS_V1</h3>
-                <div class="sol-grid">
-                    <button>Neon_Noir</button>
-                    <button>Clean_UX</button>
-                    <button>Apple_Core</button>
-                    <button>Crypto_Dash</button>
-                    <button>Agency_Web</button>
-                    <button onclick="copiarPix()">Payment_Gate</button>
-                </div>
-                <div style="margin-top:
+        <button class="status-green" style="border-color:#39FF14; color:#39FF14;" onclick="copiarPix()">Payment_Gate</button>
+    </div>
+    <div style="margin-top:30px;">
+        <span class="label">Professional_Brief</span>
+        <p style="font-size:0.5rem; color:#666; font-family:'JetBrains Mono';">Especialista em criar infraestruturas blindadas com design estratégico. Foco em interfaces de alta performance e defesa cibernética ativa.</p>
+    </div>
+</div>
