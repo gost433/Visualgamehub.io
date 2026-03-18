@@ -14,54 +14,52 @@
             display: flex; flex-direction: column; align-items: center; justify-content: center; 
         }
 
-        /* TELA DE ENTRADA (A CORTINA) */
-        #splash { 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: #000; z-index: 999; display: flex; 
-            flex-direction: column; align-items: center; justify-content: center; 
-            cursor: pointer; color: #39FF14; transition: 0.5s;
-        }
+        /* TELA DE ENTRADA */
+        #splash { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 999; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; color: #39FF14; transition: 0.5s; }
 
         /* HUB PRINCIPAL */
-        #hub-screen { 
-            display: none; /* Começa escondido e o JS liga ele */
-            width: 100%; max-width: 900px; flex-direction: column; 
-            align-items: center; justify-content: center; z-index: 10;
-        }
-
-        .chroma { color: #39FF14; text-shadow: 0 0 15px #39FF14; margin-bottom: 40px; letter-spacing: 5px; font-size: 1.5rem; text-align: center; }
+        #hub-screen { display: none; width: 100%; max-width: 950px; flex-direction: column; align-items: center; justify-content: center; z-index: 10; }
+        .chroma { color: #39FF14; text-shadow: 0 0 15px #39FF14; margin-bottom: 30px; letter-spacing: 5px; font-size: 1.5rem; text-align: center; }
 
         /* GRID DE CARDS */
-        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; width: 90%; }
-        .card { background: #050505; border: 1px solid #1a1a1a; padding: 30px; border-radius: 15px; text-align: center; transition: 0.3s; }
+        .grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 20px; width: 95%; }
+        .card { background: #050505; border: 1px solid #1a1a1a; padding: 25px; border-radius: 15px; text-align: center; transition: 0.3s; }
         
-        /* CORES DO SCAN */
+        /* CORES DO STATUS */
         .status-red { color: #ff3131; border-color: #ff3131 !important; }
         .status-green { color: #39FF14; border-color: #39FF14 !important; text-shadow: 0 0 10px #39FF14; }
 
+        /* BOTÕES DE SOLUÇÕES (GRID INTERNA) */
+        .solutions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+        
         button { 
-            background: none; border: 1px solid #333; color: #888; padding: 12px; 
-            width: 100%; cursor: pointer; font-family: 'Orbitron'; font-size: 0.6rem; 
-            margin-top: 10px; transition: 0.3s; text-transform: uppercase; 
+            background: none; border: 1px solid #333; color: #888; padding: 10px; 
+            width: 100%; cursor: pointer; font-family: 'Orbitron'; font-size: 0.55rem; 
+            transition: 0.3s; text-transform: uppercase; 
         }
         button:hover { border-color: #fff; color: #fff; }
 
-        .contact-btn { background: #39FF14; color: #000; font-weight: bold; margin-top: 40px; width: 280px; border: none; padding: 15px; }
+        .btn-green { border-color: #28a745; color: #28a745; }
+        .btn-green:hover { border-color: #39FF14; color: #39FF14; }
+
+        /* BOTÃO PRINCIPAL */
+        .contact-btn { background: #39FF14; color: #000; font-weight: bold; margin-top: 35px; width: 300px; border: none; padding: 15px; font-size: 0.8rem; }
+        .contact-btn:hover { background: #fff; box-shadow: 0 0 20px #39FF14; }
 
         /* FOOTER */
-        .footer-nav { position: absolute; bottom: 30px; display: flex; gap: 40px; font-size: 0.6rem; color: #333; letter-spacing: 2px; }
-        .footer-nav span:hover { color: #39FF14; cursor: pointer; }
+        .footer-nav { position: absolute; bottom: 25px; display: flex; gap: 40px; font-size: 0.6rem; color: #222; letter-spacing: 2px; }
+        .footer-nav span:hover { color: #444; cursor: pointer; }
 
         /* MODAL */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; }
-        .modal-content { background: #0a0a0a; border: 1px solid #39FF14; padding: 40px; max-width: 500px; border-radius: 10px; position: relative; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 2000; justify-content: center; align-items: center; }
+        .modal-content { background: #0a0a0a; border: 1px solid #39FF14; padding: 40px; max-width: 500px; border-radius: 10px; text-align: left; }
     </style>
 </head>
 <body oncontextmenu="return false;">
 
     <div id="splash" onclick="unlock()">
-        <p style="font-family: 'JetBrains Mono';">> DECRYPTING_VANGUARD_FILES...</p>
-        <p style="font-size: 0.5rem; color: #444; margin-top: 15px;">[ CLICK TO BYPASS ]</p>
+        <p style="font-family: 'JetBrains Mono';">> INITIALIZING_VANGUARD_HUB...</p>
+        <p style="font-size: 0.5rem; color: #333; margin-top: 15px;">[ CLICK TO ENTER ]</p>
     </div>
 
     <div id="hub-screen">
@@ -69,15 +67,21 @@
         
         <div class="grid">
             <div id="card-scan" class="card status-red">
-                <h3 id="scan-title" style="font-size:0.75rem; margin-bottom: 15px;">SECURITY_SHIELD</h3>
-                <div id="status-text" style="margin-bottom:20px; font-size:0.6rem; font-family:'JetBrains Mono';">> SYSTEM_IDLE...</div>
+                <h3 id="scan-title" style="font-size:0.7rem; margin-bottom: 15px;">SECURITY_SHIELD</h3>
+                <div id="status-text" style="margin-bottom:20px; font-size:0.55rem; font-family:'JetBrains Mono'; min-height:30px;">> SYSTEM_IDLE...</div>
                 <button id="btn-action" class="status-red" onclick="runScan()">RUN_SCAN</button>
             </div>
 
-            <div class="card" style="border-color: #28a745;">
-                <h3 style="color:#28a745; font-size:0.75rem; margin-bottom: 15px;">SOLUTIONS</h3>
-                <button style="border-color:#28a745; color:#28a745;" onclick="location.href='exemplo6.html'">PAYMENT_SYSTEM</button>
-                <button onclick="location.href='exemplo2.html'">CLEAN_UI</button>
+            <div class="card" style="border-color: #333;">
+                <h3 style="color:#fff; font-size:0.7rem; margin-bottom: 15px;">DEPLOYED_SOLUTIONS</h3>
+                <div class="solutions-grid">
+                    <button onclick="location.href='exemplo1.html'">NEON_STYLE</button>
+                    <button onclick="location.href='exemplo2.html'">CLEAN_UI</button>
+                    <button onclick="location.href='exemplo3.html'">APPLE_CORE</button>
+                    <button onclick="location.href='exemplo4.html'">CRYPTO_DASH</button>
+                    <button onclick="location.href='exemplo5.html'">AGENCY_WEB</button>
+                    <button class="btn-green" onclick="location.href='exemplo6.html'">PAYMENT_GATE</button>
+                </div>
             </div>
         </div>
 
@@ -91,51 +95,42 @@
 
     <div id="modal" class="modal" onclick="this.style.display='none'">
         <div class="modal-content" onclick="event.stopPropagation()">
-            <div id="modal-text" style="font-family:'JetBrains Mono'; font-size:0.75rem; color:#888;"></div>
+            <div id="modal-text" style="font-family:'JetBrains Mono'; font-size:0.7rem; color:#888; line-height:1.6;"></div>
         </div>
     </div>
 
     <script>
-        // FORÇA A APARIÇÃO DO HUB
         function unlock() {
             document.getElementById('splash').style.display = 'none';
             document.getElementById('hub-screen').style.display = 'flex';
         }
-
-        // Se o cara não clicar, abre sozinho em 4 segundos
-        setTimeout(unlock, 4000);
+        setTimeout(unlock, 3500);
 
         function runScan() {
             const card = document.getElementById('card-scan');
             const title = document.getElementById('scan-title');
             const text = document.getElementById('status-text');
             const btn = document.getElementById('btn-action');
-
-            text.innerHTML = "> SCANNING...";
-            
+            text.innerHTML = "> SCANNING_CORE...";
             setTimeout(() => {
-                card.classList.remove('status-red');
-                card.classList.add('status-green');
+                card.classList.replace('status-red', 'status-green');
                 title.classList.add('status-green');
                 text.classList.add('status-green');
-                btn.classList.remove('status-red');
-                btn.classList.add('status-green');
-                
+                btn.classList.replace('status-red', 'status-green');
                 text.innerHTML = "> SCAN_COMPLETE<br>> 100%_SECURE";
                 btn.innerHTML = "PROTECTED";
             }, 1500);
         }
 
         const info = {
-            sobre: "VANGUARDS VISUAL: Engenharia estratégica e Design futurista por Kovaliosky.",
-            faq: "SISTEMA SEGURO: Proteção contra plágio ativa. Pagamentos via Cripto e Pix."
+            sobre: "<h3 style='color:#39FF14'>VANGUARDS VISUAL</h3><br>Célula de engenharia liderada por Kovaliosky. Especialistas em interfaces de alta performance e blindagem digital.",
+            faq: "<h3 style='color:#39FF14'>SISTEMA_INTEL</h3><br><b>SEGURANÇA:</b> Proteção nativa contra inspeção.<br><b>PAGAMENTOS:</b> Suporte a Pix e Cripto ativos."
         };
 
         function openModal(key) {
             document.getElementById('modal-text').innerHTML = info[key];
             document.getElementById('modal').style.display = 'flex';
         }
-
         document.onkeydown = function(e) { if(e.keyCode == 123) return false; };
     </script>
 </body>
