@@ -3,3 +3,43 @@
 *.suo
 bin/
 obj/
+# --- PYTHON & TRADING BOTS ---
+# Ambientes virtuais (nunca envie a pasta venv)
+venv/
+env/
+.venv/
+ENV/
+
+# Arquivos de Cache do Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Configurações e Logs de Trading
+*.log
+logs/
+data/*.csv
+data/*.json
+!data/config_sample.json
+
+# --- SEGURANÇA (CRITICAL) ---
+# Nunca envie suas chaves de API da Binance ou Telegram
+.env
+config.py
+auth.json
+secrets.txt
+
+# --- WEB & DESIGN (TAILWIND/JS) ---
+# Dependências de Node (se usar futuramente)
+node_modules/
+.eslintcache
+
+# Arquivos do Sistema Operacional
+.DS_Store
+Thumbs.db
+
+# --- IDEs ---
+.vscode/
+.idea/
+*.swp
