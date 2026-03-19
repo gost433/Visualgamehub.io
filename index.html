@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kv's Enterprise | Visual Studio Games</title>
+    <title>VisualStudioAndSecurity | Kv's Enterprise</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
@@ -12,67 +12,77 @@
             font-family: 'Courier New', monospace;
         }
 
-        .neon-glow {
-            text-shadow: 0 0 10px #00ff00;
-        }
-
         .border-neon {
             border: 1px solid #00ff00;
             box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
         }
+
+        .neon-glow {
+            text-shadow: 0 0 10px #00ff00;
+        }
+
+        /* ANIMAÇÃO DE CORES DO TÍTULO (RGB GAMER) */
+        .color-shift {
+            animation: colorChange 10s infinite linear;
+            text-shadow: 0 0 15px rgba(255,255,255,0.2);
+        }
+
+        @keyframes colorChange {
+            0% {
+                color: #00ff00;
+                text-shadow: 0 0 10px #00ff00;
+            }
+
+            16% {
+                color: #00ffff;
+                text-shadow: 0 0 10px #00ffff;
+            }
+
+            33% {
+                color: #0000ff;
+                text-shadow: 0 0 10px #0000ff;
+            }
+
+            50% {
+                color: #ff00ff;
+                text-shadow: 0 0 10px #ff00ff;
+            }
+
+            66% {
+                color: #ff0000;
+                text-shadow: 0 0 10px #ff0000;
+            }
+
+            83% {
+                color: #ffff00;
+                text-shadow: 0 0 10px #ffff00;
+            }
+
+            100% {
+                color: #00ff00;
+                text-shadow: 0 0 10px #00ff00;
+            }
+        }
+
+        /* BOTÕES PEQUENOS DO MENU */
+        .nav-btn {
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #fff;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+            .nav-btn:hover {
+                border-color: #00ff00;
+                color: #00ff00;
+                box-shadow: 0 0 10px rgba(0,255,0,0.3);
+                transform: translateY(-2px);
+            }
     </style>
 </head>
 <body class="p-4 md:p-12 min-h-screen flex items-center justify-center">
 
     <div class="max-w-5xl w-full">
-        <h1 class="text-center text-4xl font-black neon-glow mb-12 tracking-[0.2em]">VANGUARD_CORE_HUB</h1>
+        <h1 class="text-center text-3xl md:text-5xl font-black color-shift mb-8 tracking-[0.2em]">VisualStudioAndSecurity</h1>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="border-neon p-8 rounded-3xl bg-black">
-                <h2 class="text-xl font-bold text-[#00ff00] mb-6 uppercase">Security_Shield</h2>
-                <div class="bg-[#00ff00]/5 border border-[#00ff00]/20 p-6 rounded-xl">
-                    <p class="text-[10px] text-gray-500 uppercase mb-2">BTC/USDT LIVE</p>
-                    <span id="btc-price" class="text-3xl font-bold text-[#00ff00]">CONECTANDO...</span>
-                </div>
-                <div class="mt-8 text-[10px] text-gray-400 uppercase">Lead Engineer: Guilherme Kovaliosky</div>
-            </div>
-
-            <div class="border-neon p-8 rounded-3xl bg-black">
-                <h2 class="text-xl font-bold mb-8 uppercase">Active_Solutions_v1</h2>
-
-                <div class="mb-8">
-                    <a href="https://github.com/VisualStudioandSecurity?tab=repositories" target="_blank" class="block w-full p-6 border border-[#00ff00]/40 text-[#00ff00] text-center text-lg font-bold hover:bg-[#00ff00] hover:text-black transition-all uppercase">
-                        REPOS_ATIVOS: <span id="repo-count">0</span>
-                    </a>
-                </div>
-
-                <a href="https://github.com/VisualStudioandSecurity" target="_blank" class="block w-full text-center border border-[#00ff00] text-[#00ff00] py-6 text-[12px] font-black hover:bg-[#00ff00] hover:text-black transition-all tracking-[0.3em] uppercase">
-                    ABRIR TERMINAL_GITHUB
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Motor do Bitcoin (Binance WebSocket)
-        const btcDisplay = document.getElementById('btc-price');
-        const btcWs = new WebSocket('wss://stream.binance.com:9443/ws/btcusdt@ticker');
-        btcWs.onmessage = (event) => {
-            const data = JSON.parse(event.data);
-            btcDisplay.innerText = '$' + parseFloat(data.c).toLocaleString();
-        };
-
-        // Motor do GitHub (VisualStudioandSecurity)
-        async function fetchGithub() {
-            try {
-                const res = await fetch('https://api.github.com/users/VisualStudioandSecurity');
-                const data = await res.json();
-                document.getElementById('repo-count').innerText = data.public_repos || '0';
-            } catch (err) {
-                document.getElementById('repo-count').innerText = 'ERR';
-            }
-        }
-        fetchGithub();
-    </script>
-</body>
-</html>
+        <div class="flex flex-wrap justify-center gap-3 mb-
