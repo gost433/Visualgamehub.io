@@ -1,44 +1,106 @@
-<section id="faq" class="pb-24">
-    <h2 class="text-[#00ff00] font-bold mb-8 uppercase tracking-widest">// FAQ_Database</h2>
-    <div class="space-y-6">
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisualStudioAndSecurity | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+        }
 
-        <details class="group border-b border-white/10 pb-6 cursor-pointer">
-            <summary class="font-bold text-white uppercase text-sm list-none flex justify-between items-center">
-                01. Qual o foco principal das soluções?
-                <span class="text-[#00ff00] group-open:rotate-180 transition-transform">↓</span>
-            </summary>
-            <p class="text-gray-500 text-xs mt-4 leading-relaxed">
-                Priorizamos a tríade: **Design de Elite**, **Performance** e **Segurança Máxima**.
-                Cada linha de código é escrita visando a estabilidade do sistema e uma experiência de usuário (UX) intuitiva e agressiva.
-            </p>
-        </details>
+        .border-neon {
+            border: 1px solid #00ff00;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+        }
 
-        <details class="group border-b border-white/10 pb-6 cursor-pointer">
-            <summary class="font-bold text-white uppercase text-sm list-none flex justify-between items-center">
-                02. Como é garantida a segurança dos projetos?
-                <span class="text-[#00ff00] group-open:rotate-180 transition-transform">↓</span>
-            </summary>
-            <p class="text-gray-500 text-xs mt-4 leading-relaxed">
-                Implementamos protocolos de criptografia e validação de dados em todas as camadas.
-                Seja em landing pages ou bots de monitoramento, a integridade da informação é o nosso requisito não-negociável.
-            </p>
-        </details>
+        .color-shift {
+            animation: colorChange 8s infinite linear;
+        }
 
-        <details class="group border-b border-white/10 pb-6 cursor-pointer">
-            <summary class="font-bold text-white uppercase text-sm list-none flex justify-between items-center">
-                03. O desenvolvimento é exclusivo?
-                <span class="text-[#00ff00] group-open:rotate-180 transition-transform">↓</span>
-            </summary>
-            <p class="text-gray-500 text-xs mt-4 leading-relaxed">
-                Sim. Não utilizamos templates genéricos. Cada interface é desenhada sob medida para refletir a identidade visual e a autoridade do cliente no mercado digital.
-            </p>
-        </details>
+        @keyframes colorChange {
+            0%, 100% {
+                color: #00ff00;
+                text-shadow: 0 0 10px #00ff00;
+            }
 
-    </div>
-</section>
+            33% {
+                color: #00ffff;
+                text-shadow: 0 0 10px #00ffff;
+            }
 
-<footer class="py-12 border-t border-white/5 text-center">
-    <p class="text-[9px] text-gray-600 tracking-[0.5em] uppercase">
-        © 2026 VisualStudioAndSecurity // All Rights Reserved
-    </p>
-</footer>
+            66% {
+                color: #ff00ff;
+                text-shadow: 0 0 10px #ff00ff;
+            }
+        }
+
+        section {
+            min-height: 70vh;
+            padding-top: 80px;
+        }
+
+        .nav-btn {
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
+            text-align: center;
+            cursor: pointer;
+        }
+
+            .nav-btn:hover {
+                border-color: #00ff00;
+                color: #00ff00;
+                box-shadow: 0 0 10px #00ff0033;
+            }
+    </style>
+</head>
+<body>
+
+    <nav class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-sm border-b border-white/10 p-4">
+        <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <span class="text-[10px] font-black text-[#00ff00] tracking-tighter">VS_SECURITY</span>
+            <div class="flex gap-4">
+                <a href="#hub" class="text-[9px] uppercase hover:text-[#00ff00]">Hub</a>
+                <a href="#portfolio" class="text-[9px] uppercase hover:text-[#00ff00]">Projetos</a>
+                <a href="#faq" class="text-[9px] uppercase hover:text-[#00ff00]">FAQ</a>
+                <a href="https://wa.me/5599999999999" target="_blank" class="text-[9px] uppercase text-purple-400">Contato</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-5xl mx-auto px-6">
+
+        <header class="h-screen flex flex-col items-center justify-center text-center">
+            <h1 class="text-4xl md:text-6xl font-black color-shift mb-4 tracking-widest uppercase">
+                VisualStudioAndSecurity
+            </h1>
+            <p class="text-gray-500 text-[10px] tracking-[0.4em] uppercase">Security & High Performance Design</p>
+            <div class="mt-20 animate-bounce text-[#00ff00]">↓</div>
+        </header>
+
+        <section id="hub">
+            <h2 class="text-[#00ff00] font-bold mb-8 uppercase tracking-widest">// Monitoring_Hub</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="border-neon p-8 rounded-2xl bg-white/5">
+                    <p class="text-[9px] text-gray-500 mb-2 uppercase tracking-widest">BTC/USDT Live</p>
+                    <div id="btc-price" class="text-3xl font-bold text-[#00ff00]">CONECTANDO...</div>
+                </div>
+                <div class="border-neon p-8 rounded-2xl bg-white/5 text-center">
+                    <p class="text-[9px] text-gray-500 mb-2 uppercase tracking-widest">Active Repos</p>
+                    <div id="repo-count" class="text-3xl font-bold">0</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio">
+            <h2 class="text-[#00ff00] font-bold mb-8 uppercase tracking-widest">// System_Deployments</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <a href="exemplo1.html" class="nav-btn p-6 text-[10px] font-bold">LP_01</a>
+                <a href="exemplo2.html" class="nav-btn p-6 text-[10px] font-bold">LP_02</a>
+                <a href="exemplo3.html" class="nav-btn p-6 text-[10px] font-bold">LP_03</a>
+                <a href="exemplo4.html" class="nav-btn p-6 text-[10px] font-bold">LP_04</a>
+                <a href="exemplo5.html" class="nav-btn p-6 text-[10px] font-bold">LP_05</a>
+                <a href=" exemplo6.html
