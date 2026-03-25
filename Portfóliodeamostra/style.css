@@ -1,0 +1,195 @@
+/* Configurações Globais */
+:root {
+    --bg-dark: #121212;
+    --bg-light: #fdfcf6; /* Creme suave da imagem */
+    --accent-orange: #c7864e; /* Tom terra dos botões e seções */
+    --btn-cream: #f4f7d8; /* Tom amarelado claro dos botões */
+    --text-main: #1a1a1a;
+    --text-light: #ffffff;
+    --footer-bg: #000000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-light);
+    font-family: 'Inter', sans-serif;
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, .quote {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 20px;
+}
+
+/* Header / Hero Section */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                url('sua-foto-hero.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    color: var(--text-light);
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    max-width: 800px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+/* Botões Customizados */
+.btn-primary, .btn-secondary, .btn-dark, .btn-submit {
+    display: inline-block;
+    padding: 14px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    text-transform: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary { background-color: var(--btn-cream); color: #000; }
+.btn-secondary { background-color: var(--btn-cream); color: #000; margin-top: 30px; }
+.btn-dark { background-color: #000; color: #fff; }
+.btn-submit { background-color: var(--accent-orange); color: #fff; width: 100%; margin-top: 20px; }
+
+.btn-primary:hover, .btn-secondary:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+/* Seção Sobre */
+.about-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 60px;
+}
+
+.about h2 { font-size: 3rem; flex: 1; }
+.about-text { flex: 1; font-size: 1.1rem; color: #444; }
+
+.quote {
+    font-size: 1.8rem;
+    font-style: italic;
+    text-align: center;
+    margin: 40px 0;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 40px 0;
+}
+
+/* Imagem de Espaçamento (Efeito Parallax) */
+.image-spacer {
+    height: 500px;
+    background: url('imagem-detalhe.jpg') center/cover no-repeat fixed;
+}
+
+/* Seções Coloridas */
+.dark-bg { background-color: var(--bg-dark); color: var(--text-light); }
+.orange-bg { background-color: var(--accent-orange); color: var(--text-light); }
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: start;
+}
+
+/* Serviços */
+.services h2 { font-size: 3.5rem; line-height: 1; }
+.service-item { margin-bottom: 40px; }
+.service-item h3 { font-size: 1.6rem; margin-bottom: 10px; }
+.service-item p { opacity: 0.8; font-weight: 300; }
+
+/* Projetos */
+.projects h2 { font-size: 3rem; margin-bottom: 10px; }
+.subtitle { font-size: 1.2rem; margin-bottom: 50px; opacity: 0.9; }
+.project-card {
+    background: rgba(255,255,255,0.05);
+    padding: 40px;
+    border-radius: 4px;
+    max-width: 500px;
+}
+.project-card h3 { font-size: 2rem; margin-bottom: 15px; }
+
+/* Depoimentos */
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 50px;
+}
+.testimonial { font-size: 1.2rem; line-height: 1.4; }
+.testimonial strong { display: block; margin-top: 20px; font-size: 0.9rem; text-transform: uppercase; }
+
+/* Formulário de Contato */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+}
+
+.contact-info h2 { font-size: 3rem; line-height: 1.1; margin-bottom: 20px; }
+
+.contact-form {
+    background-color: var(--btn-cream);
+    padding: 50px;
+    border-radius: 8px;
+}
+
+.contact-form label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 0.9rem; }
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: transparent;
+    border-bottom: 2px solid var(--accent-orange);
+    outline: none;
+}
+
+/* Rodapé */
+.footer {
+    background-color: var(--footer-bg);
+    color: #888;
+    padding: 60px 0;
+}
+
+.footer-grid {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    .grid-2, .contact-grid, .testimonial-grid, .about-content {
+        grid-template-columns: 1fr;
+        display: block;
+    }
+    .about h2, .services h2, .contact-info h2 { font-size: 2.5rem; margin-bottom: 30px; }
+    .hero h1 { font-size: 2.5rem; }
+    .contact-form { padding: 30px; margin-top: 40px; }
+    .footer-grid { flex-direction: column; gap: 15px; text-align: center; }
+}
