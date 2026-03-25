@@ -45,4 +45,4 @@ Interessado em blindar sua aplicação ou desenvolver uma interface de alto nív
 <p align="center">
   <i>"No Visual Studio And Security, a segurança não é um opcional, é a base da arquitetura."</i>
 </p>
->>>>>>> 1958120df4be0ab23948e53889551c15bd809a84
+
