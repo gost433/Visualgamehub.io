@@ -8,11 +8,13 @@
       gtag('js', new Date());
       gtag('config', 'AW-11493047857');
     </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4389870681468404" crossorigin="anonymous"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visual Studio & Security | Intelligence Hub</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --bg: #0a0c10;
@@ -27,152 +29,100 @@
             font-family: 'Inter', sans-serif; 
             background: var(--bg); 
             color: var(--text); 
-            overflow-x: hidden;
             line-height: 1.6;
         }
         
-        header {
-            position: relative;
-            height: 45vh;
-            min-height: 350px;
-            background: #000;
-            border-bottom: 1px solid var(--accent);
-            overflow: hidden;
-        }
-        .header-video {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.55;
-            z-index: 1;
-        }
-
-        .status-bar {
-            background: #0d1117;
-            padding: 12px 25px;
+        /* Layout de Grade para Anúncios Laterais */
+        .main-layout {
             display: flex;
-            justify-content: space-between;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 10;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
-        .status-group { display: flex; gap: 20px; }
-        .label { color: var(--accent); font-weight: bold; }
-        .val { color: #fff; }
 
-        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
-        
+        .side-ad {
+            flex: 0 0 160px;
+            display: none; /* Esconde em telas menores que 1200px */
+        }
+
+        @media (min-width: 1200px) {
+            .side-ad { display: block; }
+        }
+
+        .content-area {
+            flex: 1;
+            max-width: 900px;
+        }
+
         .intel-report {
             background: var(--card);
             border: 1px solid var(--border);
             border-radius: 8px;
             padding: 40px;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
         }
-        .badge {
-            background: var(--critical);
-            color: #fff;
-            font-size: 0.7rem;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-family: 'JetBrains Mono';
-            text-transform: uppercase;
-        }
-        h1.report-title { 
-            font-family: 'JetBrains Mono'; 
-            font-size: 1.8rem; 
-            margin: 20px 0; 
-            color: #fff;
-        }
-        .report-content p { margin-bottom: 20px; color: #8b949e; text-align: justify; }
-        .tool-list { margin: 25px 0; padding-left: 20px; border-left: 2px solid var(--accent); }
-        .tool-item { margin-bottom: 15px; font-size: 0.9rem; }
-        .tool-name { color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold; }
 
-        footer { text-align: center; padding: 60px 20px; font-size: 0.8rem; opacity: 0.5; border-top: 1px solid var(--border); }
+        .multiplex-container {
+            margin: 40px 0;
+            padding: 20px;
+            background: rgba(22, 27, 34, 0.5);
+            border: 1px dashed var(--border);
+            border-radius: 8px;
+        }
+
+        .badge { background: var(--critical); color: #fff; padding: 4px 8px; font-family: 'JetBrains Mono'; font-size: 0.7rem; }
+        footer { text-align: center; padding: 40px; border-top: 1px solid var(--border); opacity: 0.6; }
     </style>
 </head>
 <body>
 
-<header>
-    <video autoplay loop muted playsinline class="header-video">
-        <source src="assets/tech_eye_background.mp4" type="video/mp4">
-    </video>
-</header>
+<div class="main-layout">
+    <aside class="side-ad">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-4389870681468404"
+             data-ad-slot="9778961944"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </aside>
 
-<div class="status-bar">
-    <div class="status-group">
-        <div><span class="label">ID:</span> <span class="val">VISUAL_STUDIO_SECURITY</span></div>
-        <div><span class="label">STATUS:</span> <span class="val" style="color:#3fb950">ONLINE</span></div>
-    </div>
-    <div class="status-group">
-        <div><span class="label">IP:</span> <span class="val" id="ip-addr">168.228.25.207</span></div>
-        <div><span class="label">TARGET:</span> <span class="val">DOMÍNIO_EMPRESARIAL</span></div>
-    </div>
-</div>
+    <main class="content-area">
+        <article class="intel-report">
+            <span class="badge">Ameaça Crítica: FAUX#ELEVATE</span>
+            <h1 style="color: #fff; font-family: 'JetBrains Mono'; margin: 20px 0;">Relatório: Exfiltração de Dados</h1>
+            <p style="color: #8b949e;">[Conteúdo do seu relatório de Cybersecurity...]</p>
+        </article>
 
-<div class="container">
-    <article class="intel-report">
-        <span class="badge">Ameaça Crítica: FAUX#ELEVATE</span>
-        <h1 class="report-title">Relatório de Inteligência: Mineração e Exfiltração de Dados</h1>
-        
-        <div class="report-content">
-            <p><strong>Hackers estão utilizando uma nova abordagem para roubar credenciais empresariais e implementando o Crypto miner (Mecanismo de Mineração de Crypto ativos).</strong></p>
-            
-            <p>Há uma campanha rodando com o foco em ambientes corporativos na qual currículos falsos implantados com um mecanismo de mineradores e roubo de informações utilizando VBScript com ofuscação disfarçados de Doc de currículos/Cv, os cibercriminosos utilizam E-mails de Phishing, quando ativo, o vírus/malware aplica uma execução de ferramentas multiuso configurada para extrair dados e minerar crypto ativos da rede Monero.</p>
-
-            <p>O mecanismo se tornou popularmente chamado de Faux#Elevate pelas instituições de defesa cibernéticas, a campanha se destaca por seus abusos de serviços e infraestruturas de legítimos, utilizando DropBox para o armazenamento de payloads, sites como Wordpress marrocos para hospedarem configurações de controle (C2) E E-MAIL. Também utilizam ru SMTP para exfiltração das credenciais dos navegadores alvos e arquivos de Desktop, exemplo esse que nos leva a enxergar como os ataques podem enganar os mecanismos de segurança sem chamarem muito atenção.</p>
-
-            <p>Os invasores utilizam um sistema de Visual Basic Script que consiste em enviar e exibir uma mensagem de erro, na qual os destinatários acham que o arquivo corrompeu, porém, não imaginam que a mensagem é só um "Bait", uma forma de "isca" para o script com 224 mil linhas, na qual somente 226 linhas contêm o código real, executando várias verificações, evitando sandboxes e entrando em looping de controle persistente da conta do destinatário/Usuário. O malware também tem um mecanismo de porta de união de domínio, utilizando Windows Management Instrumentation, visando apenas os sistemas empresariais. Assim que o atacante entra na máquina da empresa, desativa os controles de segurança para camuflar seus rastros, configurando e excluindo o Microsoft Defender, desativando o UAC por meio de alterações no registros do Windows e se auto-excluindo.</p>
-
-            <p>Entre as ferramentas usadas para facilitar o roubo de credenciais está um componente que utiliza o projeto ChromElevator para extrair dados sensíveis de navegadores baseados em Chromium, contornando as proteções contra criptografia vinculada a aplicativos (ABE). Algumas das outras ferramentas incluem:</p>
-
-            <div class="tool-list">
-                <div class="tool-item"><span class="tool-name">mozilla.vbs:</span> um malware VBScript para roubo do perfil e credenciais do Mozilla Firefox</div>
-                <div class="tool-item"><span class="tool-name">walls.vbs:</span> um payload VBScript para exfiltração de arquivos em desktop</div>
-                <div class="tool-item"><span class="tool-name">mservice.exe:</span> um minerador de criptomoedas XMRig lançado após recuperar a configuração de mineração de um site marroquino do WordPress comprometido</div>
-                <div class="tool-item"><span class="tool-name">WinRing0x64.sys:</span> um driver legítimo do kernel do Windows usado para desbloquear todo o potencial de mineração da CPU</div>
-                <div class="tool-item"><span class="tool-name">RuntimeHost.exe:</span> um componente de Trojan persistente que modifica as regras do Firewall do Windows e se comunica periodicamente com um servidor C2</div>
-            </div>
-
-            <p>Os dados exclusivos do navegador são exfiltrados usando dois e-mails separados de contas remetentes ru ("olga.aitsaid@mail.ru" e "3pw5nd9neeyn@mail.ru") que compartilham a mesma senha via SMTP para outro endereço de e-mail operado pelo ator ameaçador ("vladimirprolitovitch@duck.com").</p>
-
-            <p>Uma vez concluídas as atividades de roubo e exfiltração de credenciais, a cadeia de ataque inicia uma limpeza agressiva de todas as ferramentas caídas na tentativa de minimizar a pegada forense, deixando apenas o minerador e o troiano.</p>
-
-            <p style="border-top: 1px solid var(--border); padding-top: 20px; font-style: italic; color: #8b949e;">
-                "A campanha FAUX#ELEVATE demonstra uma operação de ataque bem organizada e em múltiplas etapas que combina várias técnicas notáveis em uma única cadeia de infecção", disse Securonix. "O que torna esta campanha particularmente perigosa para as equipes de segurança corporativas é a velocidade de execução, a cadeia completa de infecção completa em aproximadamente 25 segundos desde a execução inicial do VBS até a exfiltração de credenciais, e o direcionamento seletivo de máquinas conectadas ao domínio, que garante que cada host comprometido ofereça o máximo valor por meio do roubo de credenciais corporativas e sequestro persistente de recursos."
-            </p>
+        <div class="multiplex-container">
+            <h3 style="color: var(--accent); font-size: 0.8rem; margin-bottom: 15px; font-family: 'JetBrains Mono';">_conteudo_relacionado</h3>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-format="autorelaxed"
+                 data-ad-client="ca-pub-4389870681468404"
+                 data-ad-slot="9348417801"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
         </div>
-    </article>
+    </main>
 
-    <section style="margin-top: 40px; padding: 30px; background: rgba(88, 166, 255, 0.05); border: 1px dashed var(--border); border-radius: 8px;">
-        <h2 style="font-family: 'JetBrains Mono'; font-size: 1rem; color: var(--accent); margin-bottom: 20px;">_terminologia_técnica</h2>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-            <div>
-                <h4 style="color: #fff; margin-bottom: 5px; font-size: 0.9rem;">WMI (Windows Management Instrumentation)</h4>
-                <p style="font-size: 0.8rem; color: #8b949e;">Infraestrutura da Microsoft para gerenciamento de dados e operações em sistemas operacionais Windows. No caso do FAUX#ELEVATE, é explorada para persistência silenciosa e coleta de dados sem arquivos físicos.</p>
-            </div>
-            <div>
-                <h4 style="color: #fff; margin-bottom: 5px; font-size: 0.9rem;">ABE (App-Bound Encryption)</h4>
-                <p style="font-size: 0.8rem; color: #8b949e;">Camada de proteção que vincula segredos (como senhas salvas) à identidade de um executável específico no Chrome. O malware utiliza o ChromElevator para tentar contornar essa proteção.</p>
-            </div>
-        </div>
-    </section>
+    <aside class="side-ad">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-4389870681468404"
+             data-ad-slot="9778961944"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </aside>
 </div>
 
 <footer>
-    <p>&copy; 2026 Kovaliosky DeV | Visual Studio & Security. Built for Performance.</p>
+    <p>&copy; 2026 Kovaliosky DeV | Security Audit Specialist</p>
 </footer>
-
-<script>
-    fetch('https://api.ipify.org?format=json')
-        .then(res => res.json())
-        .then(data => document.getElementById('ip-addr').innerText = data.ip);
-</script>
 
 </body>
 </html>
