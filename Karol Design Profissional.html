@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="pt-BR" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estética de Sobrancelhas</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&amp;family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    html, body { height: 100%; margin: 0; }
+    * { box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; background: #faf8f6; color: #333; }
+
+    .hero-bg { background: linear-gradient(135deg, #8B4789 0%, #D4A5D4 100%); }
+    .card-hover { transition: all 0.3s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(139, 71, 137, 0.15); }
+
+    .booking-form { background: #fff; border-radius: 12px; padding: 32px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); max-width: 600px; margin: 0 auto; }
+    input, textarea, select { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #e0e0e0; border-radius: 8px; font-family: 'Poppins', sans-serif; }
+    
+    .btn-primary { background: #8B4789; color: #fff; border: none; padding: 14px 32px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .btn-primary:hover { background: #7a3d76; }
+
+    .tab-btn { padding: 12px 20px; border: none; background: transparent; cursor: pointer; font-weight: 500; transition: 0.2s; border-radius: 8px; display: flex; align-items: center; gap: 8px; color: #666; }
+    .tab-btn.active { background: #8B4789; color: #fff !important; }
+
+    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+    .gallery-item { aspect-ratio: 1; border-radius: 12px; overflow: hidden; background: #eee; position: relative; }
+    .gallery-item img { width: 100%; height: 100%; object-cover: cover; }
+
+    .toast-enter { animation: toastIn 0.3s ease forwards; }
+    @keyframes toastIn { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
+    .toast-exit { animation: toastOut 0.3s ease forwards; opacity: 0; }
+    @keyframes toastOut { from { opacity:1; } to { opacity:0; transform: translateY(20px); } }
+  </style>
+ </head>
+ <body class="h-full">
+  <div id="app" class="w-full h-full overflow-auto">
+   <div id="toast-container" style="position:fixed; bottom:24px; right:24px; z-index:200; display:flex; flex-direction:column; gap:8px;"></div>
+
+   <nav class="bg-white border-b sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+       <span class="text-2xl">💄</span> <span id="nav-salon-name" class="font-bold text-[#8B4789] text-lg">Beauty Brows</span>
+      </div>
+      <div class="flex gap-2">
+        <button id="btn-booking" onclick="showTab('booking')" class="tab-btn active"><i data-lucide="calendar"></i><span class="hidden sm:inline">Agendar</span></button> 
+        <button id="btn-appointments" onclick="showTab('appointments')" class="tab-btn" style="position: relative;"><i data-lucide="clock"></i><span class="hidden sm:inline">Lista</span><span id="appointment-badge" class="hidden absolute -top-1 -right-1 w-5 h-5 rounded-full text-[10px] bg-red-500 text-white flex items-center justify-center font-bold">0</span></button> 
+        <button id="btn-gallery" onclick="showTab('gallery')" class="tab-btn"><i data-lucide="image"></i><span class="hidden sm:inline">Galeria</span></button>
+      </div>
+    </div>
+   </nav>
+
+   <section class="hero-bg py-12 text-white text-center">
+     <h1 id="hero-title" class="text-3xl font-black px-4" style="font-family: 'Playfair Display', serif;">Seus olhos merecem destaque</h1>
+     <p id="hero-subtitle" class="opacity-90">Design de sobrancelhas profissional</p>
+   </section>
+
+   <main class="max-w-7xl mx-auto px-4 py-12">
+     <div id="booking-tab">
+      <div class="booking-form">
+       <h2 class="text-xl font-bold mb-6" style="font-family: 'Playfair Display', serif;">Agende seu horário</h2>
+       <form onsubmit="handleBooking(event)">
+        <label class="text-sm font-medium">Nome</label>
+        <input type="text" id="client-name" placeholder="Seu nome completo" required>
+        <label class="text-sm font-medium">Telefone</label>
+        <input type="tel" id="client-phone" placeholder="(11) 99999-9999" required>
+        <label class="text-sm font-medium">Serviço</label>
+        <select id="service-select" required></select>
+        <div class="grid grid-cols-2 gap-4">
+            <div><label class="text-sm font-medium">Data</label><input type="date" id="booking-date" required></div>
+            <div><label class="text-sm font-medium">Horário</label><input type="time" id="booking-time" required></div>
+        </div>
+        <button type="submit" class="btn-primary w-full mt-6 shadow-lg">Confirmar Agendamento</button>
+       </form>
+      </div>
+     </div>
+
+     <div id="appointments-tab" class="hidden">
+      <h2 class="text-2xl font-bold mb-8" style="font-family: 'Playfair Display', serif;">Meus Agendamentos</h2>
+      <div id="appointments-container" class="grid gap-4"></div>
+     </div>
+
+     <div id="gallery-tab" class="hidden">
+      <div class="flex justify-between items-center mb-8">
+        <h2 class="text-2xl font-bold" style="font-family: 'Playfair Display', serif;">Galeria de Trabalhos</h2>
+        <button onclick="addGalleryItem()" class="btn-primary flex items-center gap-2 py-2 px-6"><i data-lucide="plus" class="w-4 h-4"></i> Adicionar Foto</button>
+      </div>
+      <div class="gallery" id="gallery-container"></div>
+     </div>
+   </main>
+
+   <footer class="bg-[#3a2f3a] text-white py-12 text-center mt-auto">
+      <p id="footer-text" class="text-gray-400 text-sm">© 2024 Beauty Brows. Todos os direitos reservados.</p>
+   </footer>
+  </div>
+
+<script>
+const services = [
+  { id: 'design', name: 'Design de Sobrancelhas', price: 85 },
+  { id: 'fio', name: 'Design com Fio a Fio', price: 120 },
+  { id: 'henna', name: 'Henna na Sobrancelha', price: 65 },
+  { id: 'lamina', name: 'Sobrancelha com Lâmina', price: 75 }
+];
+
+let allData = [];
+
+function refreshIcons() {
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function showToast(msg) {
+  const c = document.getElementById('toast-container');
+  const t = document.createElement('div');
+  t.className = 'toast-enter bg-[#8B4789] text-white px-6 py-3 rounded-lg shadow-xl text-sm font-medium';
+  t.innerText = msg;
+  c.appendChild(t);
+  setTimeout(() => { t.classList.add('toast-exit'); setTimeout(() => t.remove(), 300); }, 3000);
+}
+
+const dataHandler = {
+  onDataChanged(data) {
+    allData = data;
+    renderAppointments();
+    renderGallery();
+    updateBadge();
+  }
+};
+
+(async () => {
+  await window.dataSdk.init(dataHandler);
+  refreshIcons();
+})();
+
+function renderBookingForm() {
+  const s = document.getElementById('service-select');
+  s.innerHTML = '<option value="">Selecione o serviço...</option>' + 
+    services.map(x => `<option value="${x.id}">${x.name} - R$ ${x.price}</option>`).join('');
+}
+
+async function handleBooking(e) {
+  e.preventDefault();
+  const serv = services.find(x => x.id === document.getElementById('service-select').value);
+  await window.dataSdk.create({
+    type: 'appointment',
+    client_name: document.getElementById('client-name').value,
+    service: serv.name,
+    date: document.getElementById('booking-date').value,
+    time: document.getElementById('booking-time').value
+  });
+  e.target.reset();
+  showToast('✓ Agendamento realizado com sucesso!');
+  showTab('appointments');
+}
+
+function renderAppointments() {
+  const container = document.getElementById('appointments-container');
+  const items = allData.filter(d => d.type === 'appointment');
+  
+  if (items.length === 0) {
+    container.innerHTML = '<div class="text-center py-20 text-gray-400 bg-white rounded-xl">Nenhum agendamento encontrado.</div>';
+    return;
+  }
+
+  container.innerHTML = items.map(a => `
+    <div class="bg-white p-6 rounded-xl shadow-sm border flex justify-between items-center card-hover">
+      <div>
+        <div class="font-bold text-lg">${a.client_name}</div>
+        <div class="text-[#8B4789] font-medium">${a.service}</div>
+        <div class="text-gray-500 text-sm flex items-center gap-1 mt-1">
+            <i data-lucide="calendar" class="w-3 h-3"></i> ${a.date} às ${a.time}
+        </div>
+      </div>
+      <button onclick="deleteRecord('${a.id}')" class="text-gray-300 hover:text-red-500 transition-colors p-2">
+        <i data-lucide="trash-2"></i>
+      </button>
+    </div>
+  `).join('');
+  refreshIcons();
+}
+
+function renderGallery() {
+  const g = document.getElementById('gallery-container');
+  const items = allData.filter(d => d.type === 'gallery');
+  
+  if (items.length === 0) {
+    g.innerHTML = '<div class="col-span-full text-center py-20 text-gray-400 bg-white rounded-xl border-dashed border-2">Sua galeria está vazia. Adicione fotos dos seus trabalhos!</div>';
+    return;
+  }
+
+  g.innerHTML = items.map(i => `
+    <div class="gallery-item group shadow-md">
+      <img src="${i.imageUrl}" onerror="this.src='https://placehold.co/400?text=Imagem+Indisponível'" class="transition-transform duration-500 group-hover:scale-110">
+      <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+        <button onclick="deleteRecord('${i.id}')" class="bg-white text-red-500 p-3 rounded-full shadow-lg">
+          <i data-lucide="trash-2" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+  `).join('');
+  refreshIcons();
+}
+
+async function addGalleryItem() {
+  const url = prompt("Cole o link (URL) da foto do seu trabalho:");
+  if (!url) return;
+
+  await window.dataSdk.create({
+    type: 'gallery',
+    imageUrl: url,
+    timestamp: Date.now()
+  });
+  showToast('✓ Foto adicionada à galeria!');
+}
+
+async function deleteRecord(id
