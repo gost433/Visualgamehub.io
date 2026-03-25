@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kovaliosky DeV | Senior Developer & Cybersecurity Specialist</title>
-    <meta name="description" content="Portfólio de Guilherme (Kovaliosky DeV), especialista em Desenvolvimento Senior e Segurança Cibernética.">
+    <title>Kovaliosky DeV | Senior Developer & Graphic Designer</title>
+    <meta name="description" content="Portfólio de Guilherme (Kovaliosky DeV), especialista em Desenvolvimento Senior, Design Gráfico e Segurança Cibernética. Explore meu trabalho e experiência.">
+    <meta name="keywords" content="Desenvolvedor Senior, Design Gráfico, Segurança Cibernética, Portfólio, Guilherme Kovaliosky, Desenvolvimento Web, UI/UX, Pentest, AWS, Azure, GCP">
+    <meta name="author" content="Guilherme Kovaliosky DeV">
+    <link rel="canonical" href="https://seusite.com.br">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <style>
@@ -31,119 +34,44 @@
             background: var(--card-bg);
             border: 1px solid rgba(255,255,255,0.05);
             transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .glass-card:hover {
             border-color: var(--accent);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 242, 255, 0.1);
+            transform: scale(1.03);
+            box-shadow: 0 6px 8px rgba(0, 242, 255, 0.15);
         }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-dark); }
-        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00b3b8;
+        }
     </style>
 </head>
 <body class="antialiased">
-
-    <section class="relative py-20 md:py-32 flex items-center min-h-screen">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="text-left">
-                    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
-                        Olá, eu sou <br><span class="gradient-text">Kovaliosky DeV</span>
+    <section class="relative py-20 md:py-32">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4 text-left">
+                        Olá, eu sou <span class="gradient-text">Guilherme Kovaliosky</span>
                     </h1>
-                    <p class="text-lg md:text-xl mb-8 text-gray-400 max-w-lg">
-                        Senior Developer e Especialista em Cybersecurity. Transformando lógica complexa em soluções digitais seguras e de alta performance.
+                    <p class="text-lg mb-6 text-gray-300 text-justify">
+                        Desenvolvedor Senior, Designer Gráfico e especialista em Segurança Cibernética. Explorando a interseção entre código, design e segurança, oferecendo soluções completas e inovadoras.
+                    </p>
+                    <p class="text-gray-300 mb-6 text-justify">
+                        Apaixonado por tecnologia e design, desde meus 15 anos de idade sempre gostei de pesquisar sobre como é feito o processo e desenvolvimentos de sites e programas, desde então passei a pesquiar e me relacionar com pessoas da área de desenvolvimento de softwares, hoje com 23 anos, 8 anos de muito estudo e dedicação tenho um vasto conhecimento,busco constantemente aprimorar minhas habilidades e entregar resultados de alta qualidade.
                     </p>
                     <div class="flex space-x-4">
-                        <a href="#projects" class="bg-accent hover:brightness-110 text-black font-bold py-3 px-8 rounded-full transition-all">
+                        <a href="#projects" class="bg-accent hover:bg-blue-600 text-bg-dark font-semibold py-2 px-6 rounded-full transition-colors duration-300">
                             Meus Projetos
                         </a>
-                        <a href="#contact" class="border border-accent text-accent hover:bg-accent hover:text-black font-bold py-3 px-8 rounded-full transition-all">
-                            Contato
-                        </a>
-                    </div>
-                </div>
-                <div class="flex justify-center">
-                    <img src="https://placehold.co/500x500/0d0d0d/00f2ff?text=Kovaliosky+DeV" alt="Profile" class="rounded-2xl shadow-2xl border border-gray-800 glass-card w-full max-w-md">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="py-24 bg-[#080808]">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center underline decoration-accent">Projetos em Destaque</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
-                <div class="glass-card p-8 rounded-2xl flex flex-col h-full">
-                    <div class="mb-6 overflow-hidden rounded-lg">
-                        <img src="https://placehold.co/400x250/111/00f2ff?text=Finance+Scanner" alt="Scanner Financeiro" class="hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 text-accent mono">>_ Finance Scanner</h3>
-                    <p class="text-gray-400 text-sm mb-6 flex-grow text-justify">
-                        Ferramenta de análise gráfica com robusto código-cérebro, processando múltiplos parâmetros simultâneos via API da Binance. Estruturado com Pandas para cálculos de alta velocidade em BTC/USDT, monitorando o timeframe de 4h com foco em scalping de precisão.
-                    </p>
-                    <a href="#" class="text-white font-semibold flex items-center hover:text-accent transition-colors">
-                        Ver detalhes no GitHub <span class="ml-2">→</span>
-                    </a>
-                </div>
-
-                <div class="glass-card p-8 rounded-2xl flex flex-col h-full">
-                    <div class="mb-6 overflow-hidden rounded-lg">
-                        <img src="https://placehold.co/400x250/111/555?text=Cyber+Audit" alt="Segurança" class="opacity-50">
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 text-gray-500 mono">>_ Cyber Audit Tool</h3>
-                    <p class="text-gray-500 text-sm mb-6 flex-grow">
-                        Projeto em desenvolvimento focado em análise de vulnerabilidades e Hardening de sistemas corporativos.
-                    </p>
-                    <span class="text-gray-600 font-semibold italic text-sm">Em breve...</span>
-                </div>
-
-                <div class="glass-card p-8 rounded-2xl flex flex-col h-full">
-                    <div class="mb-6 overflow-hidden rounded-lg">
-                        <img src="https://placehold.co/400x250/111/555?text=Gaming+Engine" alt="Games" class="opacity-50">
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 text-gray-500 mono">>_ Game Dev Hub</h3>
-                    <p class="text-gray-500 text-sm mb-6 flex-grow">
-                        Portal de jogos e experimentos desenvolvidos com engines no-code para alta performance.
-                    </p>
-                    <span class="text-gray-600 font-semibold italic text-sm">Em breve...</span>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-24">
-        <div class="container mx-auto px-6 max-w-4xl">
-            <div class="glass-card p-10 rounded-3xl border border-gray-800">
-                <h2 class="text-3xl font-bold mb-8 text-center">Vamos trabalhar juntos?</h2>
-                <form class="space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-sm font-mono text-accent mb-2">NOME</label>
-                            <input type="text" class="w-full bg-black border border-gray-800 rounded-lg p-3 focus:border-accent outline-none text-white">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-mono text-accent mb-2">EMAIL</label>
-                            <input type="email" class="w-full bg-black border border-gray-800 rounded-lg p-3 focus:border-accent outline-none text-white">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-mono text-accent mb-2">MENSAGEM</label>
-                        <textarea rows="4" class="w-full bg-black border border-gray-800 rounded-lg p-3 focus:border-accent outline-none text-white"></textarea>
-                    </div>
-                    <button class="w-full bg-accent text-black font-bold py-4 rounded-lg hover:brightness-110 transition-all uppercase tracking-widest">
-                        Enviar Transmissão
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-12 border-t border-gray-900 text-center text-gray-600 text-sm">
-        <p class="mono">© 2026 Kovaliosky DeV // Visual Studio & Security</p>
-    </footer>
-
-</body>
-</html>
+                        <a href="#contact" class="border border-accent hover:bg-accent hover:text-bg-dark text-accent
