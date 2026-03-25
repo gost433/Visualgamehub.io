@@ -138,3 +138,17 @@
             <<p style="border-top: 1px solid var(--border); padding-top: 20px; font-style: italic; color: #8b949e;">
     "A campanha FAUX#ELEVATE demonstra uma operação de ataque bem organizada e em múltiplas etapas que combina várias técnicas notáveis em uma única cadeia de infecção", disse Securonix. "O que torna esta campanha particularmente perigosa para as equipes de segurança corporativas é a velocidade de execução, a cadeia completa de infecção completa em aproximadamente 25 segundos desde a execução inicial do VBS até a exfiltração de credenciais, e o direcionamento seletivo de máquinas conectadas ao domínio, que garante que cada host comprometido ofereça o máximo valor por meio do roubo de credenciais corporativas e sequestro persistente de recursos."
 </p>
+             <section style="margin-top: 40px; padding: 30px; background: rgba(88, 166, 255, 0.05); border: 1px dashed var(--border); border-radius: 8px;">
+    <h2 style="font-family: 'JetBrains Mono'; font-size: 1rem; color: var(--accent); margin-bottom: 20px;">_terminologia_técnica</h2>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+        <div>
+            <h4 style="color: #fff; margin-bottom: 5px; font-size: 0.9rem;">WMI (Windows Management Instrumentation)</h4>
+            <p style="font-size: 0.8rem; color: #8b949e;">Infraestrutura da Microsoft para gerenciamento de dados e operações em sistemas operacionais Windows. No caso do FAUX#ELEVATE, é explorada para persistência silenciosa e coleta de dados sem arquivos físicos.</p>
+        </div>
+        <div>
+            <h4 style="color: #fff; margin-bottom: 5px; font-size: 0.9rem;">ABE (App-Bound Encryption)</h4>
+            <p style="font-size: 0.8rem; color: #8b949e;">Camada de proteção que vincula segredos (como senhas salvas) à identidade de um executável específico no Chrome. O malware utiliza o ChromElevator para tentar contornar essa proteção.</p>
+        </div>
+    </div>
+</section>
