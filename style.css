@@ -1,35 +1,35 @@
-/* --- Header com o Olho Metálico - Versão Otimizada --- */
+/* --- Header com o Olho Metálico - Versão Minimalista Otimizada --- */
 header {
-    height: 480px; /* Reduzi a altura do header para centralizar o foco */
+    height: 400px; /* Reduzi mais 80px. Mais compacto, mais centralizado */
     /* ... resto do seu código ... */
 }
 
 .header-video {
-    opacity: 0.25; /* Reduzi um pouco a opacidade para o texto saltar mais */
-    filter: brightness(0.4) contrast(1.4) saturate(0.6);
+    opacity: 0.20; /* Reduzi ainda mais para dar um visual mais 'sombrio' de segurança */
+    filter: brightness(0.3) contrast(1.5) saturate(0.5); /* Filtro mais agressivo */
     /* ... resto do seu código ... */
 }
 
 .header-content {
     /* ... seu código anterior (blur, border, etc.) ... */
     
-    /* A GRANDE MUDANÇA: Reduzi o padding e o tamanho máximo */
-    padding: 35px 50px; /* Muito mais compacto */
-    max-width: 600px; /* O card agora é menor e mais técnico */
-    border-radius: 18px; /* Cantos menos arredondados para um visual mais 'sharp' */
+    /* A GRANDE REDUÇÃO: Padding e largura máxima mínimos */
+    padding: 20px 30px; /* Extremamente compacto, quase sem borda sobrando */
+    max-width: 450px; /* O card agora é um pequeno bloco técnico */
+    border-radius: 14px; /* Cantos ainda mais discretos */
     
     /* ... animação fadeInContent ... */
 }
 
-/* --- Ajuste de Escala dos Textos --- */
+/* --- Ajuste de Escala dos Textos Minimalistas --- */
 .header-content h1 {
-    font-size: 2.3rem; /* Reduzi de 3.5rem para 2.3rem. Impactante, mas não gigante */
+    font-size: 1.8rem; /* Reduzi de 2.3rem para 1.8rem. Menos gigante, mais técnico */
     font-weight: 700;
-    margin-bottom: 8px; /* Menos espaço entre o título e a descrição */
+    margin-bottom: 6px; /* Menos espaço entre o título e a descrição */
 }
 
 .header-content p {
-    font-size: 0.95rem; /* Reduzi de 1.2rem para 0.95rem */
-    letter-spacing: 0.5px;
-    color: rgba(139, 148, 158, 0.9);
+    font-size: 0.85rem; /* Reduzi de 0.95rem para 0.85rem. Quase um rodapé técnico */
+    letter-spacing: 0.3px;
+    color: rgba(139, 148, 158, 0.8);
 }
