@@ -1,35 +1,38 @@
-/* --- Header com o Olho Metálico - Versão Minimalista Otimizada --- */
+/* --- Header com o Olho Metálico - Escala de Precisão --- */
 header {
-    height: 400px; /* Reduzi mais 80px. Mais compacto, mais centralizado */
-    /* ... resto do seu código ... */
-}
-
-.header-video {
-    opacity: 0.20; /* Reduzi ainda mais para dar um visual mais 'sombrio' de segurança */
-    filter: brightness(0.3) contrast(1.5) saturate(0.5); /* Filtro mais agressivo */
-    /* ... resto do seu código ... */
+    height: 380px; /* Redução para focar no centro da íris */
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
 }
 
 .header-content {
-    /* ... seu código anterior (blur, border, etc.) ... */
-    
-    /* A GRANDE REDUÇÃO: Padding e largura máxima mínimos */
-    padding: 20px 30px; /* Extremamente compacto, quase sem borda sobrando */
-    max-width: 450px; /* O card agora é um pequeno bloco técnico */
-    border-radius: 14px; /* Cantos ainda mais discretos */
-    
-    /* ... animação fadeInContent ... */
+    /* Glassmorphism mantido, mas área reduzida drasticamente */
+    padding: 12px 20px; 
+    max-width: 350px; /* Card agora é um pequeno bloco central */
+    border-radius: 10px; /* Cantos mais retos para aspecto técnico */
+    background: rgba(13, 17, 23, 0.85); 
+    border: 1px solid rgba(88, 166, 255, 0.2);
+    text-align: center;
+    z-index: 2;
+    backdrop-filter: blur(15px);
 }
 
-/* --- Ajuste de Escala dos Textos Minimalistas --- */
+/* --- Tipografia de Painel de Controle --- */
 .header-content h1 {
-    font-size: 1.8rem; /* Reduzi de 2.3rem para 1.8rem. Menos gigante, mais técnico */
+    font-size: 1.3rem; /* Título pequeno e sofisticado */
     font-weight: 700;
-    margin-bottom: 6px; /* Menos espaço entre o título e a descrição */
+    margin-bottom: 4px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .header-content p {
-    font-size: 0.85rem; /* Reduzi de 0.95rem para 0.85rem. Quase um rodapé técnico */
-    letter-spacing: 0.3px;
-    color: rgba(139, 148, 158, 0.8);
+    font-size: 0.7rem; /* Texto de suporte minimalista */
+    letter-spacing: 1.5px;
+    color: #8b949e;
+    opacity: 0.7;
 }
