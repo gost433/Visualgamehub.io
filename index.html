@@ -12,32 +12,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
   
   <style>
-    body {
-      background-color: #050505;
-      color: #ffffff;
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      overflow-x: hidden;
-    }
+    body { background-color: #050505; color: #ffffff; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
     .text-cyan { color: #00f2ff; }
     .hero-title { font-size: 4rem; font-weight: 900; line-height: 1.1; }
-    
     .gk-circle {
-      width: 320px;
-      height: 320px;
-      border-radius: 50%;
+      width: 320px; height: 320px; border-radius: 50%;
       background: radial-gradient(circle, rgba(0,242,255,0.1) 0%, rgba(5,5,5,1) 70%);
       border: 1px solid rgba(0,242,255,0.2);
-      display: flex;
-      align-items: center; justify-content: center;
+      display: flex; align-items: center; justify-content: center;
     }
-
-    .btn-main { background-color: #00f2ff; color: #050505; padding: 0.8rem 2rem; border-radius: 9999px; font-weight: 700; transition: transform 0.2s; text-decoration: none; }
-    .btn-main:hover { transform: scale(1.05); }
-
-    .btn-sec { border: 1px solid #00f2ff; color: #ffffff; padding: 0.8rem 2rem; border-radius: 9999px; font-weight: 700; text-decoration: none; }
-
+    .btn-main { background-color: #00f2ff; color: #050505; padding: 0.8rem 2rem; border-radius: 9999px; font-weight: 700; transition: all 0.2s; text-decoration: none; }
+    .btn-main:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 242, 255, 0.4); }
+    .btn-sec { border: 1px solid #00f2ff; color: #ffffff; padding: 0.8rem 2rem; border-radius: 9999px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
+    .btn-sec:hover { background: rgba(0, 242, 255, 0.1); }
     .tag-skill { background: rgba(0, 242, 255, 0.05); border: 1px solid rgba(0, 242, 255, 0.3); color: #00f2ff; padding: 0.5rem 1.5rem; border-radius: 9999px; font-size: 0.9rem; }
+    
+    /* Estilo do Cripto Hub */
+    .hub-container { border: 2px solid #ff0000; background: #000; margin-top: 50px; position: relative; }
+    .hub-header { background: #000; border-bottom: 1px solid #111; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; }
+    .status-dot { width: 10px; height: 10px; background: #00ff00; border-radius: 50%; display: inline-block; margin-right: 5px; box-shadow: 0 0 10px #00ff00; }
   </style>
 </head>
 
@@ -45,18 +38,15 @@
   <div id="app-wrapper" class="min-h-screen flex flex-col">
     
     <section class="flex-grow flex items-center px-10 py-20">
-      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center w-full">
         <div>
           <h1 class="hero-title mb-6">Olá, eu sou<br><span class="text-cyan">Guilherme Kovaliosky</span></h1>
-          <p class="text-xl text-gray-400 mb-10 max-w-lg text-justify">
-            Senior Developer, Designer Gráfico e especialista em Segurança Cibernética. Unindo código e design para criar a <span class="text-white font-bold">Visual Studio and Security</span>.
-          </p>
+          <p class="text-xl text-gray-400 mb-10 max-w-lg">Senior Developer, Designer Gráfico e especialista em Segurança Cibernética. Unindo código e design para criar a <span class="text-white font-bold">Visual Studio and Security</span>.</p>
           <div class="flex gap-4">
             <a href="#projects" class="btn-main">Meus Projetos</a>
             <a href="#contact" class="btn-sec">Contato</a>
           </div>
         </div>
-        
         <div class="flex justify-center">
           <div class="gk-circle">
             <span class="text-7xl font-black text-cyan">GK</span>
@@ -65,7 +55,40 @@
       </div>
     </section>
 
-    <section class="py-20 text-center" id="skills">
+    <section id="projects" class="py-10 px-6">
+      <div class="max-w-6xl mx-auto">
+        <div class="hub-container rounded-lg overflow-hidden">
+          <div class="hub-header">
+            <span class="text-xs font-mono text-green-500">🚀 VISUAL CRIPTO HUB - M30</span>
+            <span class="text-xs font-mono text-green-500 flex items-center"><span class="status-dot"></span> Status: Monitorando...</span>
+          </div>
+          <div class="w-full h-[500px]">
+            <div id="tradingview_widget" class="h-full w-full"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+            <script type="text/javascript">
+              new TradingView.widget({
+                "autosize": true,
+                "symbol": "BINANCE:BTCUSDT",
+                "interval": "30",
+                "timezone": "America/Sao_Paulo",
+                "theme": "dark",
+                "style": "1",
+                "locale": "br",
+                "enable_publishing": false,
+                "hide_top_toolbar": false,
+                "backgroundColor": "rgba(0, 0, 0, 1)",
+                "container_id": "tradingview_widget"
+              });
+            </script>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <p class="text-xs font-mono text-green-800">© 2026 Visual Studio & Security. Especialista Senior: Guilherme Kovaliosky</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 text-center">
       <h2 class="text-4xl font-bold mb-12">Habilidades Profissionais</h2>
       <div class="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto px-6">
         <span class="tag-skill">Pentest</span>
@@ -77,25 +100,35 @@
     </section>
 
     <footer class="py-10 text-center text-gray-600 border-t border-white/5">
-      <p>© 2026 Kovaliosky DeV. Todos os direitos reservados para <span class="text-gray-400">Visual Studio and Security</span>.</p>
+      <p>© 2026 Kovaliosky DeV. Todos os direitos reservados para <span class="text-gray-400 font-bold">Visual Studio and Security</span>.</p>
     </footer>
   </div>
 
   <script>
+    // Bloqueio de Teclas de Inspeção (F12, Ctrl+Shift+I, etc)
     document.addEventListener('keydown', e => {
-      if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && [73, 74, 67].includes(e.keyCode)) || (e.ctrlKey && e.keyCode == 85)) e.preventDefault();
+      if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && [73, 74, 67].includes(e.keyCode)) || (e.ctrlKey && e.keyCode == 85)) {
+        e.preventDefault();
+      }
     });
+    // Bloqueio de Clique Direito
     document.addEventListener('contextmenu', e => e.preventDefault());
 
+    // Debugger Trap para travar inspeção
     setInterval(() => {
       const s = new Date();
       debugger;
-      if (new Date() - s > 100) window.location.href = "about:blank";
+      if (new Date() - s > 100) { window.location.href = "about:blank"; }
     }, 1000);
 
+    // Alerta de DevTools e Redirecionamento
     window.addEventListener('resize', () => {
-      if ((window.outerWidth - window.innerWidth) > 160) {
-        document.body.innerHTML = "<div style='background:#050505;color:#00f2ff;height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;'><h1>ACESSO RESTRITO<br>SISTEMA MONITORADO POR<br>VISUAL STUDIO AND SECURITY</h1></div>";
+      if ((window.outerWidth - window.innerWidth) > 160 || (window.outerHeight - window.innerHeight) > 160) {
+        document.body.innerHTML = `
+          <div style="background:#050505;color:#00f2ff;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-family:sans-serif;">
+            <h1 style="font-size:3rem;font-weight:900;">ACESSO RESTRITO</h1>
+            <p style="font-size:1.2rem;color:#666;">SISTEMA MONITORADO POR VISUAL STUDIO AND SECURITY</p>
+          </div>`;
       }
     });
   </script>
